@@ -9,6 +9,7 @@ gsap.from(".hero-text span", {
   ease: "power4.out"
 });
 
+
 // Cursor effect
 const cursor = document.getElementById("cursor");
 window.addEventListener("mousemove", (e) => {
@@ -93,3 +94,20 @@ menuBtn.addEventListener("click", () => {
     menuBtn.textContent = "☰";
   }
 });
+
+
+gsap.to("#about img",{
+  scrollTrigger:{
+    trigger:"#about img",
+    start:"top 80%"
+  },
+  scale:1.7,
+  duration:1,
+  ease:"power3.out",
+  delay:1,
+  opacity:1,
+  stagger:0.3
+  ,
+
+
+})
