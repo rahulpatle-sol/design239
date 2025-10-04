@@ -382,14 +382,24 @@
 
 
   <!-- MENU -->
-  <div id="menu" class="fixed inset-0 bg-black text-white flex flex-col items-center justify-center text-4xl gap-6 hidden">
-    <a href="#main">Home</a>
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
+<!-- FULLSCREEN MENU -->
+<div id="menu" class="fixed inset-0 bg-black text-white flex flex-col items-center justify-center text-4xl gap-6 hidden">
+  <!-- Logo Section -->
+  <div class="absolute top-6 left-6 w-32 h-auto">
+    <img src="./assets/logo.png" alt="Logo" class="w-full h-auto object-contain" />
   </div>
 
-  <!-- MENU BUTTON -->
-  <button id="menuBtn" class="fixed top-6 right-6 z-50 text-white text-3xl">☰</button>
+  <!-- Navigation Links -->
+  <div class="flex flex-col items-center gap-6 mt-20">
+    <a href="#main" class="hover:text-indigo-400 transition duration-300">Home</a>
+    <a href="#services" class="hover:text-indigo-400 transition duration-300">Services</a>
+    <a href="#portfolio" class="hover:text-indigo-400 transition duration-300">Portfolio</a>
+  </div>
+</div>
+
+<!-- MENU BUTTON -->
+<button id="menuBtn" class="fixed top-6 right-6 z-50 text-white text-3xl">☰</button>
+
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
