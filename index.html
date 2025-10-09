@@ -37,7 +37,8 @@
 
     #cursor { 
       position: fixed; top: 0; left: 0;
-   height: 30px; width: 3dvh;
+        height: 30px;
+      width: 3dvh;
       border: 2px solid white; border-radius: 50%;
       pointer-events: none; mix-blend-mode: difference;
       transform: translate(-50%, -50%); 
@@ -78,7 +79,7 @@
   .footer-link:hover::after {
     width: 100%;
   }
-  .card {
+  .card{
         background: rgb(0, 0, 0);
         backdrop-filter: blur(12px);
         transition: all 0.4s ease;
@@ -94,6 +95,33 @@
     .input-line:focus-within {
       border-color: #000;
       transform: scale(1.02);}
+      .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 20px;
+        height: 300px;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+
+      .glass-card {
+    @apply flex items-center justify-center p-8 m-4 h-64 rounded-xl text-transparent bg-clip-text text-center font-bold text-2xl backdrop-blur-md shadow-md transition duration-500 ease-in-out transform;
+  }
+
+  .glass-card:hover {
+    @apply scale-105 shadow-2xl;
+  }
+
+  glass-card {
+    @apply h-64 w-full flex flex-col items-center justify-center gap-3 rounded-xl text-white font-semibold text-center shadow-md backdrop-blur-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl;
+  }
+
+  .glass-icon {
+    @apply text-4xl;
+  }
   </style>
 </head>
 
@@ -104,7 +132,7 @@
 
   <!-- Hero Section -->
   <section id="main" class="h-screen flex flex-col items-center justify-center text-center relative overflow-hidden">
-<div class="w-20 h-auto absolute top-0 left-0"><img src="./assets/logo.png" alt="logo"></div>
+<div class="w-40 h-auto absolute top-0 left-0"><img src="./assets/logo.png" alt="logo"></div>
     <!-- Rotating PNG background -->
     <div id="rotating-bg"></div>
 
@@ -119,8 +147,8 @@
       We help startups & creators grow fast on social media with creative content.
     </p>
 
-    <button class="mt-10 px-8 py-4 text-lg font-semibold rounded-full bg-white text-black hover:scale-105 transition">
-      Let's Build
+    <button id="mainbtn" class="mt-10 px-8 py-4 text-lg font-semibold rounded-full bg-white text-black hover:scale-105 transition">
+Get Started
     </button>
 
     <!-- Floating Blob -->
@@ -128,49 +156,47 @@
   </section>
 <!--  about section  -->
 <section id="about" class="bg-black text-white px-8 py-20">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-800 overflow-hidden">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
     <!-- Left Image -->
-    <div class="bg-black flex items-center justify-center p-4">
-      <img src="./assets/about.png"alt="About" class="rounded-2xl object-cover w-full h-64 md:h-full" />
+    <div class="col-span-1 flex items-center justify-center">
+      <img src="https://images.unsplash.com/photo-1633457519574-29c294d1805c?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="About" class="rounded-2xl object-cover w-full h-64 lg:h-full" />
     </div>
 
     <!-- Center ABOUT text -->
-    <div class="bg-black flex flex-col items-center justify-center text-center p-6">
-      <h2 class="text-5xl md:text-6xl font-semibold">ABOUT</h2>
+    <div class="col-span-1 flex flex-col items-center justify-center text-center">
+      <h2 class="text-5xl lg:text-6xl font-semibold">ABOUT</h2>
     </div>
 
     <!-- Top Right Text -->
-    <div class="bg-black p-6 flex flex-col justify-center">
+    <div class="col-span-1 flex flex-col justify-center">
       <h3 class="text-lg font-bold mb-3">OVERVIEW</h3>
-      <p class="text-gray-300 leading-relaxed text-sm md:text-base">
-        Vbizgro is a social media agency that helps startups, coaches, and local businesses grow online.
-
-We create content that gets attention, builds trust, and brings in real results.
-
+      <p class="text-gray-300 leading-relaxed text-sm lg:text-base">
+        Vbizgro is a social media agency that helps startups, coaches, and local businesses grow online.<br />
+        We create content that gets attention, builds trust, and brings in real results.
       </p>
     </div>
 
     <!-- Our Mission (Bottom Left) -->
-    <div class="bg-black p-8 col-span-1 md:col-span-2 flex flex-col md:flex-row items-center gap-6">
+    <div class="col-span-2 lg:col-span-2 flex flex-col lg:flex-row items-center gap-6">
       <div class="flex-1">
         <h3 class="text-2xl font-bold mb-4">OUR MISSION</h3>
         <p class="text-gray-300 leading-relaxed">
           Since our beginning, we’ve been passionate about helping companies of all sizes connect with their audience.
-          From startups to established enterprises, our approach is built on creativity, innovation, and measurable
-          results.
+          From startups to established enterprises, our approach is built on creativity, innovation, and measurable results.
         </p>
       </div>
-      <img src="./assets/mission.png"  class="rounded-xl w-full md:w-1/3 h-56 object-cover" />
+      <img src="./assets/mission.png" alt="Mission" class="rounded-xl w-full lg:w-1/3 h-56 object-cover" />
     </div>
 
     <!-- Bottom Right Image -->
-    <div class="bg-black flex items-center justify-center">
-      <img src="./assets/conultant.png"  class="object-cover w-full h-64 md:h-full " />
+    <div class="col-span-1 flex items-center justify-center">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Consultant" class="rounded-xl object-cover w-full h-64 lg:h-full" />
     </div>
 
   </div>
 </section>
+
 
 
 
@@ -180,43 +206,45 @@ We create content that gets attention, builds trust, and brings in real results.
 
   -->
 
-  
 <section id="why-us" class="bg-black text-white py-20 px-6 md:px-20">
   <div class="max-w-7xl mx-auto">
+    
     <!-- Heading -->
     <div class="mb-12 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-2">Why Choose Us?</h2>
-      <p class="text-red-500 text-lg font-semibold">Key Highlights</p>
+      <h2 class="text-4xl md:text-5xl font-semibold font-inter mb-2">Why Choose Us?</h2>
+      <p class="text-blue-500 text-lg font-lite">Key Highlights</p>
     </div>
 
     <!-- Features Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
       
-      <!-- Feature 1 -->
-      <div class="bg-gray-900 p-6 rounded-xl hover:scale-105 transition group">
-        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">Pixel Perfect Layout</h3>
+      <!-- Feature Card 1 -->
+      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">🎯 Strategic Content That Converts</h3>
         <p class="text-gray-300 mb-4 text-sm">
-          All sections are aligned with pixel-perfect grids and layouts. Everything is responsive across all devices.
+          We don’t just post—we build brand stories. Every reel, carousel, and caption is designed to spark engagement and drive results.
         </p>
         <a href="#" class="text-orange-400 text-sm font-medium hover:underline">Learn more →</a>
       </div>
 
-      <!-- Feature 2 -->
-      <div class="bg-gray-900 p-6 rounded-xl hover:scale-105 transition group relative">
-        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">Editable Components</h3>
+      <!-- Feature Card 2 -->
+      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">⚡ Design That Stops the Scroll</h3>
         <p class="text-gray-300 mb-4 text-sm">
-          With smart variables, you control everything. Just click and start customizing—your way, your rules.
+          Cinematic visuals, magnetic buttons, and pixel-perfect layouts—crafted to grab attention and keep users hooked.
         </p>
         <a href="#" class="text-orange-400 text-sm font-medium hover:underline">Learn more →</a>
-        <!-- Cursor Icon -->
         <div class="absolute top-4 right-4 w-6 h-6 bg-white rounded-full flex items-center justify-center text-black text-xs font-bold">↗</div>
       </div>
 
-      <!-- Feature 3 -->
-      <div class="bg-gray-900 p-6 rounded-xl hover:scale-105 transition group">
-        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">Scalable Library</h3>
+      <!-- Feature Card 3 -->
+      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">📈 Growth-Driven Systems</h3>
         <p class="text-gray-300 mb-4 text-sm">
-          Every component is custom-built, making it easy to scale your design system with icons, colors, and more.
+          From scalable design libraries to full social media handling—we build systems that grow with your brand, not just today but long-term.
         </p>
         <a href="#" class="text-orange-400 text-sm font-medium hover:underline">Learn more →</a>
       </div>
@@ -225,6 +253,8 @@ We create content that gets attention, builds trust, and brings in real results.
   </div>
 </section>
 
+
+
   <!-- SERVICES FLIP  CARD EFFECT -->
 
 
@@ -232,7 +262,7 @@ We create content that gets attention, builds trust, and brings in real results.
   <div class="max-w-7xl mx-auto">
     <!-- Heading -->
     <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Your SEARCH FOR A UI UX DESIGN STUDIO ENDS HERE...</h2>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Your SEARCH 🔍 FOR A SOCIAL  MEDIA MARKETING & BRANDING  ENDS HERE...</h2>
       <div class="w-3 h-3 rounded-full bg-white mx-auto"></div>
     </div>
 
@@ -240,7 +270,7 @@ We create content that gets attention, builds trust, and brings in real results.
     <div class="relative">
       <div id="scroll-track" class="flex gap-6 whitespace-nowrap">
         <!-- Repeatable Cards -->
-        <div class="scroll-card bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Faster Go-To Market</div>
+        <div class="scroll-card h-24 flex item-center  text-center bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Faster Go-To Market</div>
         <div class="scroll-card bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Industry-wide Experience</div>
         <div class="scroll-card bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Flexible Engagement</div>
         <div class="scroll-card bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Driven by Results</div>
@@ -255,73 +285,124 @@ We create content that gets attention, builds trust, and brings in real results.
 </section>
 <!-- services 
   -->
-<section id="services" class="relative w-full py-20 bg-black text-white">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Our Services</h2>
+<section id="glass-ui" class="w-full bg-black text-white py-20 px-6 md:px-20">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-      <!-- Card 1 -->
-      <div class="bg-[#111] text-white rounded-xl shadow-lg p-8 flex flex-col items-center justify-center hover:scale-105 hover:shadow-2xl transition-transform duration-300">
-        <span class="text-3xl mb-4">📈</span>
-        <h3 class="text-xl font-bold mb-2 text-center">Social Media Strategy</h3>
-        <p class="text-sm text-center text-gray-300">We craft strategies that grow your brand and build loyal communities.</p>
+    <!-- Left Section: Dual Column -->
+    <div class="grid grid-cols-2 gap-6 relative h-[500px] overflow-hidden">
+
+      <!-- Downward Column -->
+      <div class="down-column flex flex-col gap-6">
+        <div class="glass-card bg-gradient-to-bl from-violet-500 to-fuchsia-500">
+          <div class="glass-icon">📸</div>
+          <div>Instagram Management</div>
+        </div>
+        <div class="glass-card bg-gradient-to-r from-cyan-500 to-blue-500">
+          <div class="glass-icon">💼</div>
+          <div>LinkedIn Writing</div>
+        </div>
+        <div class="glass-card bg-gradient-to-tr from-orange-400 to-pink-500">
+          <div class="glass-icon">🎬</div>
+          <div>Reels Editing</div>
+        </div>
+        <div class="glass-card bg-gradient-to-br from-teal-400 to-green-500">
+          <div class="glass-icon">🧠</div>
+          <div>Personal Branding</div>
+        </div>
+        <div class="glass-card bg-gradient-to-l from-yellow-400 to-red-500">
+          <div class="glass-icon">🌀</div>
+          <div>Carousel Design</div>
+        </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="bg-[#111] text-white rounded-xl shadow-lg p-8 flex flex-col items-center justify-center hover:scale-105 hover:shadow-2xl transition-transform duration-300">
-        <span class="text-3xl mb-4">🎬</span>
-        <h3 class="text-xl font-bold mb-2 text-center">Reels & Video Editing</h3>
-        <p class="text-sm text-center text-gray-300">Scroll-stopping edits that tell your story in seconds.</p>
+      <!-- Upward Column -->
+      <div class="up-column flex flex-col gap-6">
+        <div class="glass-card bg-gradient-to-r from-purple-500 to-indigo-500">
+          <div class="glass-icon">📈</div>
+          <div>Social Strategy</div>
+        </div>
+        <div class="glass-card bg-gradient-to-t from-rose-400 to-purple-400">
+          <div class="glass-icon">🧩</div>
+          <div>Profile Optimization</div>
+        </div>
+        <div class="glass-card bg-gradient-to-bl from-sky-500 to-blue-700">
+          <div class="glass-icon">📘</div>
+          <div>Facebook Management</div>
+        </div>
+        <div class="glass-card bg-gradient-to-tr from-lime-400 to-emerald-500">
+          <div class="glass-icon">🚀</div>
+          <div>Startup Branding</div>
+        </div>
+        <div class="glass-card bg-gradient-to-br from-red-400 to-pink-600">
+          <div class="glass-icon">🎨</div>
+          <div>Creative Post Design</div>
+        </div>
       </div>
 
-      <!-- Card 3 -->
-      <div class="bg-[#111] text-white rounded-xl shadow-lg p-8 flex flex-col items-center justify-center hover:scale-105 hover:shadow-2xl transition-transform duration-300">
-        <span class="text-3xl mb-4">📦</span>
-        <h3 class="text-xl font-bold mb-2 text-center">Packaging Design</h3>
-        <p class="text-sm text-center text-gray-300">Designs that speak before a word is read—tactile, bold, unforgettable.</p>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="bg-[#111] text-white rounded-xl shadow-lg p-8 flex flex-col items-center justify-center hover:scale-105 hover:shadow-2xl transition-transform duration-300">
-        <span class="text-3xl mb-4">💻</span>
-        <h3 class="text-xl font-bold mb-2 text-center">Website Design</h3>
-        <p class="text-sm text-center text-gray-300">Cinematic, responsive, and built to convert—your digital storefront reimagined.</p>
-      </div>
     </div>
+
+    <!-- Right Section: Static Heading -->
+    <div class="text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">What You’ll Get</h2>
+      <p class="text-gray-400 text-sm md:text-base">Growth. Engagement. Identity. Everything your brand needs to stand out.</p>
+    </div>
+
   </div>
 </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--  process section  -->
-<section id="process" class="relative w-full bg-black text-white py-20">
+<section id="process" class="relative w-full bg-black text-white py-24 font-inter">
   <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-4xl md:text-5xl font-bold text-center mb-20">Our Process</h2>
+    <h2 class="text-4xl md:text-6xl font-bold text-center mb-24 tracking-tight">Our Process</h2>
 
     <div class="relative h-[600vh]">
       <!-- Sticky Card -->
-      <div class="sticky top-20 z-10">
-        <div class="process-card bg-[#111] rounded-xl p-8 shadow-lg text-white max-w-xl mx-auto text-center">
-          <span class="text-3xl font-bold block mb-4" id="step-number">1</span>
-          <h3 class="text-xl font-bold mb-2" id="step-title">Onboarding Call</h3>
-          <p class="text-sm text-gray-300" id="step-desc">
+      <div class="sticky top-24 z-10">
+        <div class="process-card bg-[#111] rounded-2xl p-10 shadow-2xl text-white max-w-2xl mx-auto text-center space-y-6">
+          <span class="text-4xl font-bold block" id="step-number">1</span>
+          <h3 class="text-2xl font-semibold" id="step-title">Strategic Call</h3>
+          <p class="text-base text-gray-300 leading-relaxed" id="step-desc">
             We ask you 50–60 questions about your personal and professional life to help us get into your shoes and understand your stories.
           </p>
+          <div class="flex justify-center">
+            <img src="https://images.unsplash.com/photo-1659353219596-80cd21857b52?w=800&auto=format&fit=crop&q=80" alt="Strategic Call" class="rounded-xl w-full max-w-md object-cover" />
+          </div>
         </div>
       </div>
 
       <!-- Fullscreen Images -->
-      <div class="absolute top-0 left-0 w-full h-full">
-        <div class="process-images w-full h-full">
-          <img src="./assets/design.png" class="process-img absolute w-full h-full object-cover opacity-0" />
-          <img src="./assets/design.png" class="process-img absolute w-full h-full object-cover opacity-0" />
-          <img src="./assets/design.png"  class="process-img absolute w-full h-full object-cover opacity-0" />
-          <img src="./assets/design.png"  class="process-img absolute w-full h-full object-cover opacity-0" />
-          <img src="./assets/design.png"  class="process-img absolute w-full h-full object-cover opacity-0" />
-          <img src="./assets/design.png"  class="process-img absolute w-full h-full object-cover opacity-0" />
-        </div>
-      </div>
+    <!-- Fullscreen Images -->
+<div class="absolute top-0 left-0 w-full h-full">
+  <div class="process-images w-full h-full">
+    <img src="https://images.unsplash.com/photo-1618044733300-9472054094ee?auto=format&fit=crop&w=1920&q=80" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" />
+    <img src="https://images.unsplash.com/photo-1581090700227-1e7e8e1f3f3b?auto=format&fit=crop&w=1920&q=80" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" />
+    <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d3?auto=format&fit=crop&w=1920&q=80" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" />
+    <img src="https://images.unsplash.com/photo-1581091870620-1e7e8e1f3f3b?auto=format&fit=crop&w=1920&q=80" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" />
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" />
+  </div>
+</div>
+
     </div>
   </div>
 </section>
+
+
 
 
  
@@ -532,7 +613,7 @@ We create content that gets attention, builds trust, and brings in real results.
 
         <!-- Left content -->
         <div class="contact-left opacity-0 translate-y-10">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[#1a1a1a]">Inquire about packaging services</h2>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Inquire about social media  packaging services</h2>
           <p class="text-gray-700 mb-8">
             We tackle any packaging problem, so don't hesitate to contact us!
           </p>
@@ -570,7 +651,7 @@ We create content that gets attention, builds trust, and brings in real results.
             <textarea placeholder="A brief message here" rows="3" class="w-full bg-transparent outline-none py-2 resize-none"></textarea>
           </div>
 
-          <button class="mt-4 px-6 py-3 bg-yellow-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-all duration-300 hover:scale-105 shadow-md">
+          <button class="mt-4 px-6 py-3 bg-blue-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-all duration-300 hover:scale-105 shadow-md">
             Submit Request
           </button>
         </form>
@@ -578,77 +659,81 @@ We create content that gets attention, builds trust, and brings in real results.
       </div>
     </div>
   </section>
- <footer class="relative bg-black border-t border-gray-800 py-16 overflow-hidden">
-      <!-- glowing chip background -->
-      <div class="absolute inset-0 flex justify-center items-center opacity-20">
-        <div class="w-56 h-56 bg-gradient-to-br from-orange-600/40 to-red-600/20 rounded-full blur-3xl"></div>
+<footer class="relative bg-black border-t border-gray-800 py-20 overflow-hidden font-inter">
+  <!-- Glowing chip background -->
+  <img src="https://images.unsplash.com/photo-1681101378971-5f5dc4e5000e?q=80&w=1657&auto=format&fit=crop" alt="Tech Background" class="absolute inset-0 w-full h-full object-cover opacity-10 z-0" />
+
+  <!-- Gradient glow -->
+  <div class="absolute inset-0 flex justify-center items-center z-0">
+    <div class="w-72 h-72 bg-gradient-to-br from-orange-600/40 to-red-600/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Footer content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-12 text-sm text-gray-400">
+    
+    <!-- Social Links -->
+    <div class="space-y-4">
+      <h2 class="uppercase tracking-widest">Follow us</h2>
+      <div class="flex flex-wrap gap-3">
+        <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 hover:text-white transition rounded-md">LinkedIn</a>
+        <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 hover:text-white transition rounded-md">Facebook</a>
+        <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 hover:text-white transition rounded-md">Instagram</a>
+        <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 hover:text-white transition rounded-md">Twitter</a>
       </div>
+    </div>
 
-      <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-10">
+    <!-- About Us -->
+    <div>
+      <h3 class="uppercase tracking-widest mb-4">About Us</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+      </ul>
+    </div>
 
-        <!-- Social Links -->
-        <div class="flex flex-col space-y-4 md:col-span-1">
-          <h2 class="text-sm uppercase tracking-widest text-gray-400">Follow us</h2>
-          <div class="flex flex-wrap gap-4">
-            <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 transition rounded-md">LinkedIn</a>
-            <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 transition rounded-md">Facebook</a>
-            <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 transition rounded-md">Instagram</a>
-            <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 transition rounded-md">Twitter</a>
-          </div>
-        </div>
+    <!-- Support -->
+    <div>
+      <h3 class="uppercase tracking-widest mb-4">Support</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white transition">Help Center</a></li>
+        <li><a href="#" class="hover:text-white transition">Terms</a></li>
+        <li><a href="#" class="hover:text-white transition">Privacy</a></li>
+        <li><a href="#" class="hover:text-white transition">Security</a></li>
+        <li><a href="#" class="hover:text-white transition">Affiliate</a></li>
+      </ul>
+    </div>
 
-        <!-- About Us -->
-        <div>
-          <h3 class="text-sm uppercase tracking-widest text-gray-400 mb-4">About Us</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-white">Pricing</a></li>
-            <li><a href="#" class="hover:text-white">Contact</a></li>
-            <li><a href="#" class="hover:text-white">FAQ</a></li>
-            <li><a href="#" class="hover:text-white">Blog</a></li>
-          </ul>
-        </div>
+    <!-- Services -->
+    <div>
+      <h3 class="uppercase tracking-widest mb-4">Services</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white transition"></a></li>
+        <li><a href="#" class="hover:text-white transition">Enterprise</a></li>
+        <li><a href="#" class="hover:text-white transition">Features</a></li>
+        <li><a href="#" class="hover:text-white transition">API</a></li>
+      </ul>
+    </div>
 
-        <!-- Support -->
-        <div>
-          <h3 class="text-sm uppercase tracking-widest text-gray-400 mb-4">Support</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-white">Help Center</a></li>
-            <li><a href="#" class="hover:text-white">Terms</a></li>
-            <li><a href="#" class="hover:text-white">Privacy</a></li>
-            <li><a href="#" class="hover:text-white">Security</a></li>
-            <li><a href="#" class="hover:text-white">Affiliate</a></li>
-          </ul>
-        </div>
+    <!-- Press -->
+    <div>
+      <h3 class="uppercase tracking-widest mb-4">Press</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white transition">Investors</a></li>
+        <li><a href="#" class="hover:text-white transition">Terms of Use</a></li>
+        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white transition">Cookie Policy</a></li>
+       
+      </ul>
+    </div>
+  </div>
 
-        <!-- Services -->
-        <div>
-          <h3 class="text-sm uppercase tracking-widest text-gray-400 mb-4">Services</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-white">Products</a></li>
-            <li><a href="#" class="hover:text-white">Enterprise</a></li>
-            <li><a href="#" class="hover:text-white">Features</a></li>
-            <li><a href="#" class="hover:text-white">API</a></li>
-          </ul>
-        </div>
-
-        <!-- Press -->
-        <div>
-          <h3 class="text-sm uppercase tracking-widest text-gray-400 mb-4">Press</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-white">Investors</a></li>
-            <li><a href="#" class="hover:text-white">Terms of Use</a></li>
-            <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
-            <li><a href="#" class="hover:text-white">Cookie Policy</a></li>
-            <li><a href="#" class="hover:text-white">Legal</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Bottom line -->
-      <div class="relative z-10 border-t border-gray-800 mt-12 pt-6 text-center text-sm text-gray-500">
-        <p>© 2025 All rights reserved</p>
-      </div>
-    </footer>
+  <!-- Bottom line -->
+  <div class="relative z-10 border-t border-gray-800 mt-16 pt-6 text-center text-xs text-gray-500">
+    <p>© 2025 All rights reserved</p>
+  </div>
+</footer>
 
 
 

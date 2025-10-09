@@ -183,10 +183,10 @@ gsap.fromTo(blob,
 );
 
 
-gsap.to('#about img',{
- top:20,
- scale:1.5,
-})
+// gsap.to('#about img',{
+//  top:20,
+//  scale:1.5,
+// })
 
 
 
@@ -200,35 +200,39 @@ gsap.to(scrollTrack, {
   xPercent: -50,
   repeat: -1,
   duration: 20,
-  ease: "linear"
+  ease: "linear ",
+
 });
 
 // animation  for services section
 
 // services
 // Animate each card individually as it enters viewport
-  gsap.utils.toArray("#services .grid > div").forEach((card, i) => {
+  gsap.utils.toArray("#glass-ui .grid > div").forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: {
-        trigger: card,
+        trigger: card, 
+        
         start: "top 85%",
         toggleActions: "play none none reverse"
       },
+    
       opacity: 0,
       scale: 0.85,
       y: 40,
       duration: 0.6,
       ease: "power2.out",
-      delay: i * 0.15 // staggered entrance
+      delay: i * 0.15, // staggered entrance
+      scrub: true,
     });
   });
 
   // Hover effect for individual cards
-  document.querySelectorAll("#services .grid > div").forEach(card => {
+  document.querySelectorAll("#why-chose .grid > div").forEach(card => {
     card.addEventListener("mouseenter", () => {
       gsap.to(card, {
         scale: 1.05,
-        boxShadow: "0 10px 20px rgba(255, 47, 47, 0.2)",
+        boxShadow: "0 10px 20px rgba(161, 209, 26, 0.91)",
         duration: 0.3,
         ease: "power2.out"
       });
@@ -236,7 +240,7 @@ gsap.to(scrollTrack, {
     card.addEventListener("mouseleave", () => {
       gsap.to(card, {
         scale: 1,
-        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+        boxShadow: "0 4px 6px rgba(60, 119, 221, 0.4)",
         duration: 0.3,
         ease: "power2.out"
       });
@@ -253,6 +257,33 @@ gsap.to(scrollTrack, {
       scrub: true, // smooth scroll control
     },
   });
+
+
+
+  //  new code of services
+// Downward loop
+// Downward infinite scroll (left column)
+gsap.to(".down-column", {
+  y: "+=100",           // move downward
+  duration: 5,
+  repeat: -1,
+  ease: "none"
+  , toggleActions: "play none none reverse"
+
+});
+
+// Upward infinite scroll (right column)
+gsap.to(".up-column", {
+  y: "-=100",           // move upward
+  duration: 5,
+  repeat: -1,
+  ease: "none"
+});
+
+
+
+
+
  gsap.from("footer .flex a", {
         y: 20,
         opacity: 0,
@@ -467,67 +498,178 @@ gsap.to(scrollTrack, {
         updateTestimonial(current);
       });
 
-       const steps = [
-    {
-      number: "1",
-      title: "Onboarding Call",
-      desc: "We ask you 50–60 questions about your personal and professional life to help us get into your shoes and understand your stories.",
-      imageIndex: 0
-    },
-    {
-      number: "2",
-      title: "Profile Optimization",
-      desc: "Our team will then work on your headline, bio, banner etc and give you your optimisation in the next 24 hours.",
-      imageIndex: 1
-    },
-    {
-      number: "3",
-      title: "Content Pillars",
-      desc: "We will be using our infamous funnel – TOFU, MOFU, BOFU to give you the perfect mix of topics that you will love.",
-      imageIndex: 2
-    },
-    {
-      number: "4",
-      title: "Content Calendar",
-      desc: "We share a notion board with you with content every Monday. Which means 0 follow ups. Only 15–20 mins of your time to approve content.",
-      imageIndex: 3
-    },
-    {
-      number: "5",
-      title: "Graphics Approval",
-      desc: "To communicate with you in real-time & churn content as per your requirements, we create a WhatsApp/slack group to communicate with you faster.",
-      imageIndex: 4
-    },
-    {
-      number: "6",
-      title: "Progress Report",
-      desc: "We track your progress weekly to understand what's working & then deep dive every month to give you a detailed analysis.",
-      imageIndex: 5
-    }
-  ];
+//        const steps = [
+//     {
+//       number: "1",
+//       title: "Onboarding Call",
+//       desc: "We ask you 50–60 questions about your personal and professional life to help us get into your shoes and understand your stories.",
+//       imageIndex: 0
+//     },
+//     {
+//       number: "2",
+//       title: "Profile Optimization",
+//       desc: "Our team will then work on your headline, bio, banner etc and give you your optimisation in the next 24 hours.",
+//       imageIndex: 1
+//     },
+//     {
+//       number: "3",
+//       title: "Content Pillars",
+//       desc: "We will be using our infamous funnel – TOFU, MOFU, BOFU to give you the perfect mix of topics that you will love.",
+//       imageIndex: 2
+//     },
+//     {
+//       number: "4",
+//       title: "Content Calendar",
+//       desc: "We share a notion board with you with content every Monday. Which means 0 follow ups. Only 15–20 mins of your time to approve content.",
+//       imageIndex: 3
+//     },
+//     {
+//       number: "5",
+//       title: "Graphics Approval",
+//       desc: "To communicate with you in real-time & churn content as per your requirements, we create a WhatsApp/slack group to communicate with you faster.",
+//       imageIndex: 4
+//     },
+//     {
+//       number: "6",
+//       title: "Progress Report",
+//       desc: "We track your progress weekly to understand what's working & then deep dive every month to give you a detailed analysis.",
+//       imageIndex: 5
+//     }
+//   ];
 
-  const images = document.querySelectorAll(".process-img");
+//   const images = document.querySelectorAll(".process-img");
 
-  steps.forEach((step, i) => {
-    ScrollTrigger.create({
-      trigger: "#process",
-      start: `${i * 100}vh top`,
-      end: `${(i + 1) * 100}vh top`,
-      onEnter: () => updateStep(step),
-      onEnterBack: () => updateStep(step)
-    });
-  });
+//   steps.forEach((step, i) => {
+//     ScrollTrigger.create({
+//       trigger: "#process",
+//       start: `${i * 100}vh top`,
+//       end: `${(i + 1) * 100}vh top`,
+//       onEnter: () => updateStep(step),
+//       onEnterBack: () => updateStep(step)
+//     });
+//   });
 
-  function updateStep(step) {
-    document.getElementById("step-number").textContent = step.number;
-    document.getElementById("step-title").textContent = step.title;
-    document.getElementById("step-desc").textContent = step.desc;
+//   function updateStep(step) {
+//     document.getElementById("step-number").textContent = step.number;
+//     document.getElementById("step-title").textContent = step.title;
+//     document.getElementById("step-desc").textContent = step.desc;
 
-    images.forEach((img, i) => {
-      gsap.to(img, {
-        opacity: i === step.imageIndex ? 1 : 0,
-        duration: 0.6,
-        ease: "power2.out"
-      });
-    });
+//     images.forEach((img, i) => {
+//       gsap.to(img, {
+//         opacity: i === step.imageIndex ? 1 : 0,
+//         duration: 0.6,
+//         ease: "power2.out"
+//       });
+//     });
+//   }
+
+
+// gsap.utils.toArray(".process-img").forEach((img, i) => {
+//   ScrollTrigger.create({
+//     trigger: img,
+//     start: `${i * 100}vh top`,
+//     end: `${(i + 1) * 100}vh top`,
+//     onEnter: () => updateStep(i),
+//     onEnterBack: () => updateStep(i),
+//   });
+// });
+
+// function updateStep(index) {
+//   const step = steps[index];
+//   document.getElementById("step-number").textContent = step.number;
+//   document.getElementById("step-title").textContent = step.title;
+//   document.getElementById("step-desc").textContent = step.desc;
+
+//   gsap.to(".process-img", { opacity: 0, duration: 0.5 });
+//   gsap.to(".process-img", { opacity: (el, i) => (i === index ? 1 : 0), duration: 0.5 });
+// }
+
+
+// gsap.utils.toArray(".process-img").forEach((img, i) => {
+//   ScrollTrigger.create({
+//     trigger: img,
+//     start: `${i * 100}vh top`,
+//     end: `${(i + 1) * 100}vh top`,
+//     onEnter: () => updateStep(i),
+//     onEnterBack: () => updateStep(i),
+//   });
+// });
+
+// function updateStep(index) {
+//   const step = steps[index];
+//   document.getElementById("step-number").textContent = step.number;
+//   document.getElementById("step-title").textContent = step.title;
+//   document.getElementById("step-desc").textContent = step.desc;
+
+//   gsap.to(".process-img", { opacity: 0, duration: 0.5 });
+//   gsap.to(".process-img", {
+//     opacity: (el, i) => (i === index ? 1 : 0),
+//     duration: 0.5,
+//   });
+// }
+
+// button  animation
+const mainBtn = document.getElementById("mainbtn");
+mainBtn.addEventListener("onclick",()=>{
+  console.log("button clicked");
+})
+
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+const steps = [
+  {
+    number: "1",
+    title: "streatgic Call",
+    desc: "We ask you 50–60 questions...",
+    img: "https://images.unsplash.com/photo-1659353219596-80cd21857b52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1hcmtldGluZyUyMHN0cmF0ZWd5JTIwY2FsbHxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    number: "2",
+    title: "profile Optimization",
+    desc: "We define your brand’s voice...",
+    img: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    number: "3",
+    title: "content funnel",
+    desc: "We build the experience...",
+    img: "https://plus.unsplash.com/premium_vector-1744201400607-99dddccd0180?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29udGVudCUyMGZ1bm5lbHxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    number: "4",
+    title: "content roadmap",
+    desc: "We test across devices...",
+    img: "https://plus.unsplash.com/premium_vector-1720507938681-7d683d11f3a2?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    number: "5",
+    title: "design approvel",
+    desc: "We go live with impact...",
+    img: "https://images.unsplash.com/photo-1710799885122-428e63eff691?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    number: "6",
+    title: "Progress Analytics &Reporting",
+    desc: "We track performance...",
+    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   }
+];
+
+steps.forEach((step, i) => {
+  ScrollTrigger.create({
+    trigger: ".process-images",
+    start: `${i * 100}vh top`,
+    end: `${(i + 1) * 100}vh top`,
+    onEnter: () => updateStep(i),
+    onEnterBack: () => updateStep(i),
+  });
+});
+
+function updateStep(i) {
+  document.getElementById("step-number").textContent = steps[i].number;
+  document.getElementById("step-title").textContent = steps[i].title;
+  document.getElementById("step-desc").textContent = steps[i].desc;
+  document.querySelector(".process-card img").src = steps[i].img;
+}
