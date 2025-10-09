@@ -26,6 +26,7 @@ window.addEventListener("mousemove", (e) => {
 document.querySelectorAll("button").forEach(btn => {
   btn.addEventListener("mousemove", (e) => {
     const rect = btn.getBoundingClientRect();
+    console.log(rect);
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
     gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3 });
@@ -61,18 +62,18 @@ gsap.from(".service-card", {
 });
 
 // Horizontal Scroll for Portfolio
-let sections = gsap.utils.toArray(".portfolio-wrapper > div");
-gsap.to(sections, {
-  xPercent: -100 * (sections.length - 1),
-  ease: "none",
-  scrollTrigger: {
-    trigger: "#portfolio",
-    pin: true,
-    scrub: 1,
-    snap: 1 / (sections.length - 1),
-    end: () => "+=" + document.querySelector("#portfolio").offsetWidth
-  }
-});
+// let sections = gsap.utils.toArray(".portfolio-wrapper > div");
+// gsap.to(sections, {
+//   xPercent: -100 * (sections.length - 1),
+//   ease: "none",
+//   scrollTrigger: {
+//     trigger: "#portfolio",
+//     pin: true,
+//     scrub: 1,
+//     snap: 1 / (sections.length - 1),
+//     end: () => "+=" + document.querySelector("#portfolio").offsetWidth
+//   }
+// });
 
 // Fullscreen Menu Animation
 const menuBtn = document.getElementById("menuBtn");
@@ -96,23 +97,7 @@ menuBtn.addEventListener("click", () => {
 });
 
 
-// gsap.to("#about img",{
-//   scrollTrigger:{
-//     trigger:"#about img",
-//     start:"top 80%"
-//   },
-//   scale:1.7,
-//   duration:1,
-//   ease:"power3.out",
-//   delay:1,
-//   opacity:1,
-//   stagger:0.3,
-//   ease:"power3.out",
-//   scrub:true,
-  
 
-
-// })
 
 
 
@@ -162,90 +147,7 @@ gsap.to(videoContainer, {
 });
 //
 
-  // gsap.from("#about h2", {
-  //   opacity: 0,
-  //   scale: 0.8,
-  //   duration: 1.2,
-  //   scrollTrigger: {
-  //     trigger: "#about",
-  //     start: "top 80%",
-  //   },
-  // });
 
-
-
-  // // about page animation
-  // gsap.from("#about h2", {
-  //   scrollTrigger: {
-  //     trigger: "#about",
-  //     start: "top 80%",
-  //   },
-  //   y: 80,
-  //   opacity: 0,
-  //   duration: 1,
-  //   ease: "power3.out"
-  // });
-
-  // Paragraph
-  // gsap.from("#about p", {
-  //   scrollTrigger: {
-  //     trigger: "#about",
-  //     start: "top 70%",
-  //   },
-  //   y: 60,
-  //   opacity: 0,
-  //   duration: 1.2,
-  //   delay: 0.2,
-  //   ease: "power2.out"
-  // });
-
-  // Image + text reveal
-  // gsap.from("#about .group", {
-  //   scrollTrigger: {
-  //     trigger: "#about .group",
-  //     start: "top 75%",
-  //   },
-   
-  //   opacity: 0,
-  //   duration: 1.2,
-  //   ease: "power3.out",
-  //   delay: 0.4,
-  //   stagger: 0.3,
-  //   scrub: true,
-  //   reverse: true
-
-  // });
-// gsap.registerPlugin(ScrollTrigger);
-
-// // Zoom In + Out on #about img
-// gsap.to("#about img", {
-//   scrollTrigger: {
-//     trigger: "#about img",
-//     start: "top 80%",
-//     end: "bottom 20%",
-//     scrub: true,
-//   },
-//   scale: 1.7,
-//   opacity: 1,
-//   ease: "power3.out"
-// });
-
-// const imgZoomTl = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: "#about img",
-//     start: "top 80%",
-//     end: "bottom 20%",
-//     scrub: true,
-//   }
-// });
-
-// imgZoomTl.to("#about img", {
-//   scale: 1.7,
-//   opacity: 1,
-//   ease: "power3.out"
-// });
-
- // 
  const aboutSection = document.getElementById("about");
  aboutSection.addEventListener("mouseenter", () => {
   // Cursor grows + shows text
@@ -281,37 +183,15 @@ gsap.fromTo(blob,
 );
 
 
+gsap.to('#about img',{
+ top:20,
+ scale:1.5,
+})
 
 
 
 
-// Left column cards animate UP
-gsap.from(".service-card-up", {
-  scrollTrigger: {
-    trigger: "#services",
-    start: "top 80%",
-    end: "bottom 20%",
-    scrub: true
-  },
-  y: 100,
-  opacity: 0,
-  stagger: 0.2,
-  ease: "power4.out"
-});
 
-// Right column cards animate DOWN
-gsap.from(".service-card-down", {
-  scrollTrigger: {
-    trigger: "#services",
-    start: "top 80%",
-    end: "bottom 20%",
-    scrub: true
-  },
-  y: -100,
-  opacity: 0,
-  stagger: 0.2,
-  ease: "power4.out"
-});gsap.registerPlugin(ScrollTrigger);
 
 const scrollTrack = document.getElementById("scroll-track");
 const cards = gsap.utils.toArray(".scroll-card");
@@ -323,4 +203,331 @@ gsap.to(scrollTrack, {
   ease: "linear"
 });
 
+// animation  for services section
 
+// services
+// Animate each card individually as it enters viewport
+  gsap.utils.toArray("#services .grid > div").forEach((card, i) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      },
+      opacity: 0,
+      scale: 0.85,
+      y: 40,
+      duration: 0.6,
+      ease: "power2.out",
+      delay: i * 0.15 // staggered entrance
+    });
+  });
+
+  // Hover effect for individual cards
+  document.querySelectorAll("#services .grid > div").forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      gsap.to(card, {
+        scale: 1.05,
+        boxShadow: "0 10px 20px rgba(255, 47, 47, 0.2)",
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    });
+    card.addEventListener("mouseleave", () => {
+      gsap.to(card, {
+        scale: 1,
+        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    });
+  });
+
+ gsap.to(".top", {
+    height: "100%", // full height (fill up)
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: "#portfolio",
+      start: "top center",
+      end: "bottom top",
+      scrub: true, // smooth scroll control
+    },
+  });
+ gsap.from("footer .flex a", {
+        y: 20,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+
+      gsap.from("footer h3, footer h2", {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        delay: 0.3,
+        stagger: 0.15
+      });
+
+      gsap.from("footer ul li", {
+        opacity: 0,
+        x: -20,
+        duration: 1,
+        delay: 0.5,
+        stagger: 0.05
+      });
+
+      gsap.from("footer p", {
+        opacity: 0,
+        y: 10,
+        duration: 1,
+        delay: 1
+      });
+
+      document.querySelectorAll(".project-item").forEach((item, i) => {
+      const imgOverlay = item.querySelector(".overlay");
+      const content = item.querySelector(".content");
+
+      // Slide overlay away to reveal image
+      gsap.to(imgOverlay, {
+        y: "-100%",
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 80%",
+          end: "top 30%",
+          scrub: true
+        }
+      });
+
+      // Fade in the content
+      gsap.to(content, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 75%",
+          end: "top 50%",
+        }
+      });
+    });
+
+    // CTA reveals
+    gsap.to("section#portfolio h2", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      delay: 0.3,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "section#portfolio h2",
+        start: "top 85%",
+        toggleActions: "play none none none"
+      }
+    });
+
+    gsap.to("section#portfolio p", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      delay: 0.5,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "section#portfolio p",
+        start: "top 88%",
+        toggleActions: "play none none none"
+      }
+    });
+    document.querySelectorAll(".card").forEach((card) => {
+        const color = card.dataset.color;
+
+        let glowColor;
+        if (color === "blue") glowColor = "rgba(0, 136, 255, 0.6)";
+        if (color === "red") glowColor = "rgba(255, 50, 50, 0.6)";
+        if (color === "green") glowColor = "rgba(50, 255, 100, 0.6)";
+
+        card.addEventListener("mouseenter", () => {
+          gsap.to(card, {
+            scale: 1.07,
+            boxShadow: `0 0 40px 5px ${glowColor}`,
+            borderColor: glowColor,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        });
+
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, {
+            scale: 1,
+            boxShadow: "0 0 0px rgba(0,0,0,0)",
+            borderColor: "rgba(255,255,255,0.1)",
+            duration: 0.3,
+            ease: "power2.inOut",
+          });
+        });
+      });
+
+
+       gsap.to(".contact-left", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#contact",
+        start: "top 80%",
+      },
+    });
+
+    // Animate form
+    gsap.to(".contact-form", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      delay: 0.3,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#contact",
+        start: "top 80%",
+      },
+    });
+
+    // Floating animation for image
+    gsap.to(".contact-img", {
+      y: -10,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+
+    const testimonials = [
+        {
+          name: "Arjun Malhotra",
+          role: "Founder, PixelCraft Studio",
+          img: "https://randomuser.me/api/portraits/men/12.jpg",
+          text: "“These guys took our brand to the next level! Their design precision and animation work made our website stand out globally.”",
+        },
+        {
+          name: "Priya Nair",
+          role: "Marketing Head, NovaTech",
+          img: "https://randomuser.me/api/portraits/women/45.jpg",
+          text: "“The collaboration was smooth, creative, and efficient. We saw a 50% engagement increase within a month of launch.”",
+        },
+        {
+          name: "Rohan Mehta",
+          role: "CEO, SkyLabs",
+          img: "https://randomuser.me/api/portraits/men/24.jpg",
+          text: "“Outstanding UI/UX quality! They perfectly understood our product vision and turned it into a stunning experience.”",
+        },
+        {
+          name: "Ayesha Khan",
+          role: "Product Designer, BloomTech",
+          img: "https://randomuser.me/api/portraits/women/32.jpg",
+          text: "“Their team worked like an extension of ours — creative, fast, and dedicated. Highly recommend for modern web design.”",
+        },
+      ];
+
+      let current = 0;
+      const img = document.getElementById("client-img");
+      const nameEl = document.getElementById("client-name");
+      const roleEl = document.getElementById("client-role");
+      const textEl = document.getElementById("client-text");
+
+      const updateTestimonial = (index) => {
+        const t = testimonials[index];
+        gsap.to("#testimonial", {
+          opacity: 0,
+          y: 20,
+          duration: 0.4,
+          onComplete: () => {
+            img.src = t.img;
+            nameEl.textContent = t.name;
+            roleEl.textContent = t.role;
+            textEl.textContent = t.text;
+            gsap.fromTo(
+              "#testimonial",
+              { opacity: 0, y: -20 },
+              { opacity: 1, y: 0, duration: 0.5 }
+            );
+          },
+        });
+      };
+
+      document.getElementById("nextBtn").addEventListener("click", () => {
+        current = (current + 1) % testimonials.length;
+        updateTestimonial(current);
+      });
+
+      document.getElementById("prevBtn").addEventListener("click", () => {
+        current = (current - 1 + testimonials.length) % testimonials.length;
+        updateTestimonial(current);
+      });
+
+       const steps = [
+    {
+      number: "1",
+      title: "Onboarding Call",
+      desc: "We ask you 50–60 questions about your personal and professional life to help us get into your shoes and understand your stories.",
+      imageIndex: 0
+    },
+    {
+      number: "2",
+      title: "Profile Optimization",
+      desc: "Our team will then work on your headline, bio, banner etc and give you your optimisation in the next 24 hours.",
+      imageIndex: 1
+    },
+    {
+      number: "3",
+      title: "Content Pillars",
+      desc: "We will be using our infamous funnel – TOFU, MOFU, BOFU to give you the perfect mix of topics that you will love.",
+      imageIndex: 2
+    },
+    {
+      number: "4",
+      title: "Content Calendar",
+      desc: "We share a notion board with you with content every Monday. Which means 0 follow ups. Only 15–20 mins of your time to approve content.",
+      imageIndex: 3
+    },
+    {
+      number: "5",
+      title: "Graphics Approval",
+      desc: "To communicate with you in real-time & churn content as per your requirements, we create a WhatsApp/slack group to communicate with you faster.",
+      imageIndex: 4
+    },
+    {
+      number: "6",
+      title: "Progress Report",
+      desc: "We track your progress weekly to understand what's working & then deep dive every month to give you a detailed analysis.",
+      imageIndex: 5
+    }
+  ];
+
+  const images = document.querySelectorAll(".process-img");
+
+  steps.forEach((step, i) => {
+    ScrollTrigger.create({
+      trigger: "#process",
+      start: `${i * 100}vh top`,
+      end: `${(i + 1) * 100}vh top`,
+      onEnter: () => updateStep(step),
+      onEnterBack: () => updateStep(step)
+    });
+  });
+
+  function updateStep(step) {
+    document.getElementById("step-number").textContent = step.number;
+    document.getElementById("step-title").textContent = step.title;
+    document.getElementById("step-desc").textContent = step.desc;
+
+    images.forEach((img, i) => {
+      gsap.to(img, {
+        opacity: i === step.imageIndex ? 1 : 0,
+        duration: 0.6,
+        ease: "power2.out"
+      });
+    });
+  }

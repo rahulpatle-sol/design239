@@ -37,7 +37,7 @@
 
     #cursor { 
       position: fixed; top: 0; left: 0;
-   
+   height: 30px; width: 3dvh;
       border: 2px solid white; border-radius: 50%;
       pointer-events: none; mix-blend-mode: difference;
       transform: translate(-50%, -50%); 
@@ -78,7 +78,22 @@
   .footer-link:hover::after {
     width: 100%;
   }
-
+  .card {
+        background: rgb(0, 0, 0);
+        backdrop-filter: blur(12px);
+        transition: all 0.4s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .glow {
+        box-shadow: 0 0 40px 10px rgba(255, 255, 255, 0.1);
+      }                                         
+.input-line {
+      border-bottom: 2px solid #8b735b;
+      transition: all 0.3s ease;
+    }
+    .input-line:focus-within {
+      border-color: #000;
+      transform: scale(1.02);}
   </style>
 </head>
 
@@ -127,17 +142,19 @@
 
     <!-- Top Right Text -->
     <div class="bg-black p-6 flex flex-col justify-center">
-      <h3 class="text-lg font-bold mb-3">THE ADS VANIC</h3>
+      <h3 class="text-lg font-bold mb-3">OVERVIEW</h3>
       <p class="text-gray-300 leading-relaxed text-sm md:text-base">
-        Since our beginning, we’ve been passionate about helping companies of all sizes connect with their audience.
-        From startups to established enterprises, our approach is built on creativity and measurable results.
+        Vbizgro is a social media agency that helps startups, coaches, and local businesses grow online.
+
+We create content that gets attention, builds trust, and brings in real results.
+
       </p>
     </div>
 
     <!-- Our Mission (Bottom Left) -->
     <div class="bg-black p-8 col-span-1 md:col-span-2 flex flex-col md:flex-row items-center gap-6">
       <div class="flex-1">
-        <h3 class="text-2xl font-bold mb-4">OUR MISSIONS</h3>
+        <h3 class="text-2xl font-bold mb-4">OUR MISSION</h3>
         <p class="text-gray-300 leading-relaxed">
           Since our beginning, we’ve been passionate about helping companies of all sizes connect with their audience.
           From startups to established enterprises, our approach is built on creativity, innovation, and measurable
@@ -154,6 +171,16 @@
 
   </div>
 </section>
+
+
+
+<!--  WHY CHOSE US   BOUNCING EFFECT ON  CARDS
+
+
+
+  -->
+
+  
 <section id="why-us" class="bg-black text-white py-20 px-6 md:px-20">
   <div class="max-w-7xl mx-auto">
     <!-- Heading -->
@@ -198,87 +225,8 @@
   </div>
 </section>
 
-  <!-- SERVICES -->
-<section id="specialties" class="bg-black text-white py-20 px-6 md:px-20">
-  <div class="max-w-6xl mx-auto">
-    <!-- Heading -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Services</h2>
-      <p class="text-orange-500 text-lg font-medium">What we master</p>
-    </div>
+  <!-- SERVICES FLIP  CARD EFFECT -->
 
-    <!-- Cards Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      <!-- Card Template -->
-      <div class="specialty-card bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
-        <img src="./assets/instamanagment.png" alt="Instagram Management" class="w-full h-40 object-cover" />
-        <div class="p-4">
-          <h3 class="text-lg font-bold text-orange-400 mb-2">Instagram Management</h3>
-          <p class="text-sm text-gray-300">Grow your brand with curated posts, stories, and audience engagement.</p>
-        </div>
-      </div>
-
-      <div class="specialty-card bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
-        <img src="./assets/linkdincontent.png" alt="LinkedIn Content Writing" class="w-full h-40 object-cover" />
-        <div class="p-4">
-          <h3 class="text-lg font-bold text-orange-400 mb-2">LinkedIn Content Writing</h3>
-          <p class="text-sm text-gray-300">Craft thought-leadership posts that build trust and visibility.</p>
-        </div>
-      </div>
-
-      <div class="specialty-card bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
-        <img src="./assets/reeledit.png" alt="Reels & Video Editing" class="w-full h-40 object-cover" />
-        <div class="p-4">
-          <h3 class="text-lg font-bold text-orange-400 mb-2">Reels & Video Editing</h3>
-          <p class="text-sm text-gray-300">Edit scroll-stopping videos that drive engagement and reach.</p>
-        </div>
-      </div>
- <div class="specialty-card bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
-        <img src="./assets/personal.png" alt="Instagram Management" class="w-full h-40 object-cover" />
-        <div class="p-4">
-          <h3 class="text-lg font-bold text-orange-400 mb-2">personal Branding</h3>
-          <p class="text-sm text-gray-300">Grow your brand with curated posts, stories, and audience engagement.</p>
-        </div>
-      </div>
-       <div class="specialty-card bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
-        <img src="./assets/design.png" alt="Instagram Management" class="w-full h-40 object-cover" />
-        <div class="p-4">
-          <h3 class="text-lg font-bold text-orange-400 mb-2">Carousel Design
-</h3>
-          <p class="text-sm text-gray-300">Grow your brand with curated posts, stories, and audience engagement.</p>
-        </div>
-      </div>
-       <div class="specialty-card bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
-        <img src="./assets/socilamedia.png" alt="Instagram Management" class="w-full h-40 object-cover" />
-        <div class="p-4">
-          <h3 class="text-lg font-bold text-orange-400 mb-2">Social Media streategy</h3>
-          <p class="text-sm text-gray-300">Grow your brand with curated posts, stories, and audience engagement.</p>
-        </div>
-      </div>
-       <div class="specialty-card bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
-        <img src="./assets/profile.png" alt="Instagram Management" class="w-full h-40 object-cover" />
-        <div class="p-4">
-          <h3 class="text-lg font-bold text-orange-400 mb-2">PROFILE OPTIMIZATION</h3>
-          <p class="text-sm text-gray-300">Grow your brand with curated posts, stories, and audience engagement.</p>
-        </div>
-      </div>
-<div class="specialty-card bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
-        <img src="./assets/facebookpage.png" alt="Instagram Management" class="w-full h-40 object-cover" />
-        <div class="p-4">
-          <h3 class="text-lg font-bold text-orange-400 mb-2">Facebook  Page Management</h3>
-          <p class="text-sm text-gray-300">Grow your brand with curated posts, stories, and audience engagement.</p>
-        </div>
-      </div><div class="specialty-card bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
-        <img src="./assets/stratups.png" alt="Instagram Management" class="w-full h-40 object-cover" />
-        <div class="p-4">
-          <h3 class="text-lg font-bold text-orange-400 mb-2">stratups Brand building</h3>
-          <p class="text-sm text-gray-300">Grow your brand with curated posts, stories, and audience engagement.</p>
-        </div>
-      </div>
-      <!-- Add more cards similarly -->
-    </div>
-  </div>
-</section>
 
 <section id="infinite-services" class="bg-black text-white py-20 px-6 md:px-20 overflow-hidden">
   <div class="max-w-7xl mx-auto">
@@ -305,80 +253,403 @@
     </div>
   </div>
 </section>
+<!-- services 
+  -->
+<section id="services" class="relative w-full py-20 bg-black text-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Our Services</h2>
 
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Card 1 -->
+      <div class="bg-[#111] text-white rounded-xl shadow-lg p-8 flex flex-col items-center justify-center hover:scale-105 hover:shadow-2xl transition-transform duration-300">
+        <span class="text-3xl mb-4">📈</span>
+        <h3 class="text-xl font-bold mb-2 text-center">Social Media Strategy</h3>
+        <p class="text-sm text-center text-gray-300">We craft strategies that grow your brand and build loyal communities.</p>
+      </div>
 
+      <!-- Card 2 -->
+      <div class="bg-[#111] text-white rounded-xl shadow-lg p-8 flex flex-col items-center justify-center hover:scale-105 hover:shadow-2xl transition-transform duration-300">
+        <span class="text-3xl mb-4">🎬</span>
+        <h3 class="text-xl font-bold mb-2 text-center">Reels & Video Editing</h3>
+        <p class="text-sm text-center text-gray-300">Scroll-stopping edits that tell your story in seconds.</p>
+      </div>
 
-  <!-- PORTFOLIO -->
-  <section id="portfolio" class="h-screen overflow-hidden relative">
-    <div class="portfolio-wrapper flex h-full">
-      <div class="w-screen flex items-center justify-center border gap-4 text-white text-4xl font-bold">Project 1</div>
-      <div class="w-screen flex items-center justify-center borfder text-white text-4xl font-bold">Project 2</div>
-      <div class="w-screen flex items-center justify-center bg-green-500 text-white text-4xl font-bold">Project 3</div>
-    </div>
-  </section>
-  <section class="bg-black text-white py-20 px-4">
-  <div class="max-w-7xl mx-auto text-center mb-12">
-    <h2 class="text-4xl font-bold">Choose Your Plan</h2>
-    <p class="text-gray-400 mt-2">Flexible pricing for every stage of growth</p>
-  </div>
+      <!-- Card 3 -->
+      <div class="bg-[#111] text-white rounded-xl shadow-lg p-8 flex flex-col items-center justify-center hover:scale-105 hover:shadow-2xl transition-transform duration-300">
+        <span class="text-3xl mb-4">📦</span>
+        <h3 class="text-xl font-bold mb-2 text-center">Packaging Design</h3>
+        <p class="text-sm text-center text-gray-300">Designs that speak before a word is read—tactile, bold, unforgettable.</p>
+      </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <!-- BASIC -->
-    <div class="bg-gray-900 rounded-xl p-8 transform transition duration-300 hover:scale-105 hover:shadow-xl animate-fadeInUp">
-      <h3 class="text-2xl font-bold mb-2">BASIC</h3>
-      <p class="text-gray-400 mb-4">LOREMDFHDHFHDSVJDSVC</p>
-      <div class="text-3xl font-bold mb-4">$10 <span class="text-sm font-normal">/ month</span></div>
-      <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full transition duration-300">CHOOSE THIS PLAN</button>
-      <p class="text-xs text-gray-500 mt-6 leading-relaxed">JHDFJHDFJHDFJHDFJHDF...</p>
-    </div>
-
-    <!-- PROFESSIONAL -->
-    <div class="bg-gray-900 rounded-xl p-8 transform transition duration-300 hover:scale-105 hover:shadow-xl animate-fadeInUp delay-100">
-      <h3 class="text-2xl font-bold mb-2">PROFESSIONAL</h3>
-      <p class="text-gray-400 mb-4">Advanced features for growing teams</p>
-      <div class="text-3xl font-bold mb-4">$30 <span class="text-sm font-normal">/ month</span></div>
-      <button class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full transition duration-300">CHOOSE THIS PLAN</button>
-    </div>
-
-    <!-- ENTERPRISE -->
-    <div class="bg-gray-900 rounded-xl p-8 transform transition duration-300 hover:scale-105 hover:shadow-xl animate-fadeInUp delay-200">
-      <h3 class="text-2xl font-bold mb-2">ENTERPRISE</h3>
-      <p class="text-gray-400 mb-4">Custom solutions for large orgs</p>
-      <div class="text-3xl font-bold mb-4">$99 <span class="text-sm font-normal">/ month</span></div>
-      <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full transition duration-300">CHOOSE THIS PLAN</button>
+      <!-- Card 4 -->
+      <div class="bg-[#111] text-white rounded-xl shadow-lg p-8 flex flex-col items-center justify-center hover:scale-105 hover:shadow-2xl transition-transform duration-300">
+        <span class="text-3xl mb-4">💻</span>
+        <h3 class="text-xl font-bold mb-2 text-center">Website Design</h3>
+        <p class="text-sm text-center text-gray-300">Cinematic, responsive, and built to convert—your digital storefront reimagined.</p>
+      </div>
     </div>
   </div>
 </section>
 
-  <footer class="bg-black text-white py-12 px-6 md:px-20">
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-    
-    <!-- Logo / Branding -->
-    <div class="text-2xl font-bold tracking-wide hover:text-orange-400 transition duration-300">
-      Vbizgro
+<!--  process section  -->
+<section id="process" class="relative w-full bg-black text-white py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-20">Our Process</h2>
+
+    <div class="relative h-[600vh]">
+      <!-- Sticky Card -->
+      <div class="sticky top-20 z-10">
+        <div class="process-card bg-[#111] rounded-xl p-8 shadow-lg text-white max-w-xl mx-auto text-center">
+          <span class="text-3xl font-bold block mb-4" id="step-number">1</span>
+          <h3 class="text-xl font-bold mb-2" id="step-title">Onboarding Call</h3>
+          <p class="text-sm text-gray-300" id="step-desc">
+            We ask you 50–60 questions about your personal and professional life to help us get into your shoes and understand your stories.
+          </p>
+        </div>
+      </div>
+
+      <!-- Fullscreen Images -->
+      <div class="absolute top-0 left-0 w-full h-full">
+        <div class="process-images w-full h-full">
+          <img src="./assets/design.png" class="process-img absolute w-full h-full object-cover opacity-0" />
+          <img src="./assets/design.png" class="process-img absolute w-full h-full object-cover opacity-0" />
+          <img src="./assets/design.png"  class="process-img absolute w-full h-full object-cover opacity-0" />
+          <img src="./assets/design.png"  class="process-img absolute w-full h-full object-cover opacity-0" />
+          <img src="./assets/design.png"  class="process-img absolute w-full h-full object-cover opacity-0" />
+          <img src="./assets/design.png"  class="process-img absolute w-full h-full object-cover opacity-0" />
+        </div>
+      </div>
     </div>
-
-    <!-- Navigation Links -->
-    <nav class="flex flex-wrap gap-6 text-sm font-medium">
-      <a href="#main" class="footer-link">Home</a>
-      <a href="#about" class="footer-link">About</a>
-      <a href="#services" class="footer-link">Services</a>
-      <a href="#specialties" class="footer-link">Specialties</a>
-      <a href="#portfolio" class="footer-link">Portfolio</a>
-      <a href="#infinite-services" class="footer-link">Why Us</a>
-    </nav>
-
-    <!-- CTA Button -->
-    <a href="#contact" class="px-6 py-2 bg-white text-black rounded-full hover:bg-orange-400 hover:text-white transition duration-300 font-semibold">
-      Get in Touch
-    </a>
   </div>
+</section>
 
-  <!-- Bottom Line -->
-  <div class="mt-10 text-center text-xs text-gray-500">
-    © 2025 Vbizgro. All rights reserved.
-  </div>
-</footer>
+
+ 
+<section id="portfolio" class="min-h-screen overflow-hidden relative bg-black text-white py-20">
+    <div class="max-w-6xl mx-auto px-4 space-y-20">
+
+      <!-- Project 1 -->
+      <div class="project-item relative flex flex-col md:flex-row items-center md:items-stretch overflow-hidden">
+        <div class="w-full md:w-1/2 h-64 md:h-auto relative border">
+          <!-- overlay container -->
+          <div class="overlay absolute inset-0 bg-black z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1000&auto=format&fit=crop&q=60"
+            alt="Project 1"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
+          <div class="content opacity-0 translate-y-10">
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">Project 1 Title</h3>
+            <p class="text-base md:text-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quam.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-item relative flex flex-col md:flex-row-reverse items-center md:items-stretch overflow-hidden">
+        <div class="w-full md:w-1/2 h-64 md:h-auto relative border">
+          <div class="overlay absolute inset-0 bg-black z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=1000&auto=format&fit=crop&q=60"
+            alt="Project 2"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
+          <div class="content opacity-0 translate-y-10">
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">Project 2 Title</h3>
+            <p class="text-base md:text-lg">
+              Some description about project 2. Explain what was done.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-item relative flex flex-col md:flex-row items-center md:items-stretch overflow-hidden">
+        <div class="w-full md:w-1/2 h-64 md:h-auto relative border">
+          <div class="overlay absolute inset-0 bg-black z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000&auto=format&fit=crop&q=60"
+            alt="Project 3"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
+          <div class="content opacity-0 translate-y-10">
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">Project 3 Title</h3>
+            <p class="text-base md:text-lg">
+              Some description about project 3. More details.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- See More / CTA -->
+      <div class="text-center px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 opacity-0 translate-y-10">See More Projects</h2>
+        <p class="max-w-3xl mx-auto text-base md:text-lg opacity-0 translate-y-10">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptas error dolores repellendus, autem maxime? Sequi repellendus in praesentium...
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+   <section id="pricing" class="max-w-6xl mx-auto py-20">
+      <h2 class="text-4xl font-bold text-center mb-16">Pricing Plans</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Basic -->
+        <div
+          class="card group p-8 rounded-2xl flex flex-col items-center text-center hover:cursor-pointer"
+          data-color="blue"
+        >
+          <h3 class="text-2xl font-bold mb-2">Basic</h3>
+          <p class="text-gray-400 mb-4">Seamless Web3 integration, Enhanced Privacy.</p>
+          <p class="text-3xl font-bold mb-6">$250<span class="text-base text-gray-400">/month</span></p>
+          <button
+            class="bg-transparent border border-gray-600 px-6 py-2 rounded-full mb-6 hover:bg-gray-800 transition"
+          >
+            Choose this plan
+          </button>
+          <ul class="text-sm text-gray-300 space-y-2">
+            <li>✔️ 2 free seats</li>
+            <li>✔️ 10GB cloud storage</li>
+            <li>✔️ Smart contract integration</li>
+            <li>✔️ Decentralized workflows</li>
+          </ul>
+        </div>
+
+        <!-- Professional -->
+        <div
+          class="card group p-10 rounded-2xl flex flex-col items-center text-center scale-105 hover:cursor-pointer border border-gray-700"
+          data-color="red"
+        >
+          <h3 class="text-2xl font-bold mb-2">Professional</h3>
+          <p class="text-gray-400 mb-4">Supercharged crypto tools. Personalized insights.</p>
+          <p class="text-3xl font-bold mb-6">$499<span class="text-base text-gray-400">/month</span></p>
+          <button
+            class="bg-red-600 px-6 py-2 rounded-full mb-6 hover:bg-red-700 transition"
+          >
+            Choose this plan
+          </button>
+          <ul class="text-sm text-gray-300 space-y-2">
+            <li>✔️ 5 free seats</li>
+            <li>✔️ 30GB cloud storage</li>
+            <li>✔️ Enhanced privacy</li>
+            <li>✔️ Market insights</li>
+            <li>✔️ Decentralized applications</li>
+          </ul>
+        </div>
+
+        <!-- Enterprise -->
+        <div
+          class="card group p-8 rounded-2xl flex flex-col items-center text-center hover:cursor-pointer"
+          data-color="green"
+        >
+          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+          <p class="text-gray-400 mb-4">For your elite team. Secure data, market analytics.</p>
+          <p class="text-3xl font-bold mb-6">$650<span class="text-base text-gray-400">/month</span></p>
+          <button
+            class="bg-transparent border border-gray-600 px-6 py-2 rounded-full mb-6 hover:bg-gray-800 transition"
+          >
+            Choose this plan
+          </button>
+          <ul class="text-sm text-gray-300 space-y-2">
+            <li>✔️ 10 free seats</li>
+            <li>✔️ 100GB cloud storage</li>
+            <li>✔️ Dedicated privacy</li>
+            <li>✔️ 24/7 support</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+ <section
+      class="w-11/12 md:w-10/12 lg:w-9/12 mx-auto flex flex-col md:flex-row items-center justify-between gap-12 py-20"
+    >
+      <!-- LEFT SIDE -->
+      <div class="md:w-1/2 text-left">
+        <h2 class="text-4xl md:text-6xl font-serif italic">What</h2>
+        <h2 class="text-4xl md:text-6xl font-bold">OUR CLIENTS</h2>
+        <h2 class="text-4xl md:text-6xl font-bold">ARE</h2>
+        <h2 class="text-4xl md:text-6xl font-bold">SAYING...</h2>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="md:w-1/2 relative">
+        <!-- TESTIMONIAL CARD -->
+        <div id="testimonial" class="space-y-6">
+          <div class="flex items-center gap-6">
+            <img
+              id="client-img"
+              src="https://randomuser.me/api/portraits/men/12.jpg"
+              alt="Client"
+              class="w-24 h-24 rounded-full object-cover"
+            />
+            <div>
+              <h3 id="client-name" class="text-xl font-semibold">
+                Arjun Malhotra
+              </h3>
+              <p id="client-role" class="text-sm italic text-gray-400">
+                Founder, PixelCraft Studio
+              </p>
+            </div>
+          </div>
+          <p id="client-text" class="text-gray-300 leading-relaxed">
+            “These guys took our brand to the next level! Their design precision
+            and animation work made our website stand out globally.”
+          </p>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="flex gap-4 mt-10">
+          <button
+            id="prevBtn"
+            class="w-12 h-12 rounded-full border border-gray-400 flex items-center justify-center hover:bg-white hover:text-black transition"
+          >
+            ←
+          </button>
+          <button
+            id="nextBtn"
+            class="w-12 h-12 rounded-full border border-gray-400 flex items-center justify-center hover:bg-white hover:text-black transition"
+          >
+            →
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="contact" class="min-h-screen flex items-center justify-center px-6">
+    <div class="max-w-6xl w-full bg-[#] rounded-2xl shadow-md p-10 md:p-16 overflow-hidden">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+
+        <!-- Left content -->
+        <div class="contact-left opacity-0 translate-y-10">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[#1a1a1a]">Inquire about packaging services</h2>
+          <p class="text-gray-700 mb-8">
+            We tackle any packaging problem, so don't hesitate to contact us!
+          </p>
+          <div class="overflow-hidden rounded-xl shadow-md">
+            <img src="./assets/contactus.jpg" 
+                 alt="abstract design" 
+                 class="contact-img rounded-xl scale-100 hover:scale-105 transition-transform duration-700 ease-out">
+          </div>
+        </div>
+
+        <!-- Right form -->
+        <form class="contact-form space-y-6 opacity-0 translate-y-10">
+          <div class="input-line">
+            <label class="block font-medium text-gray-800">What’s your name? <span class="text-red-500">*</span></label>
+            <input type="text" placeholder="Type name" class="w-full bg-transparent outline-none py-2" required />
+          </div>
+
+          <div class="input-line">
+            <label class="block font-medium text-gray-800">What’s your email address? <span class="text-red-500">*</span></label>
+            <input type="email" placeholder="Type email address" class="w-full bg-transparent outline-none py-2" required />
+          </div>
+
+          <div class="input-line">
+            <label class="block font-medium text-gray-800">What’s your company?</label>
+            <input type="text" placeholder="Type company name" class="w-full bg-transparent outline-none py-2" />
+          </div>
+
+          <div class="input-line">
+            <label class="block font-medium text-gray-800">What’s your phone number?</label>
+            <input type="tel" placeholder="Type phone number" class="w-full bg-transparent outline-none py-2" />
+          </div>
+
+          <div class="input-line">
+            <label class="block font-medium text-gray-800">How can we help you? <span class="text-red-500">*</span></label>
+            <textarea placeholder="A brief message here" rows="3" class="w-full bg-transparent outline-none py-2 resize-none"></textarea>
+          </div>
+
+          <button class="mt-4 px-6 py-3 bg-yellow-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-all duration-300 hover:scale-105 shadow-md">
+            Submit Request
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+ <footer class="relative bg-black border-t border-gray-800 py-16 overflow-hidden">
+      <!-- glowing chip background -->
+      <div class="absolute inset-0 flex justify-center items-center opacity-20">
+        <div class="w-56 h-56 bg-gradient-to-br from-orange-600/40 to-red-600/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-10">
+
+        <!-- Social Links -->
+        <div class="flex flex-col space-y-4 md:col-span-1">
+          <h2 class="text-sm uppercase tracking-widest text-gray-400">Follow us</h2>
+          <div class="flex flex-wrap gap-4">
+            <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 transition rounded-md">LinkedIn</a>
+            <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 transition rounded-md">Facebook</a>
+            <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 transition rounded-md">Instagram</a>
+            <a href="#" class="px-4 py-2 border border-gray-700 hover:bg-gray-800 transition rounded-md">Twitter</a>
+          </div>
+        </div>
+
+        <!-- About Us -->
+        <div>
+          <h3 class="text-sm uppercase tracking-widest text-gray-400 mb-4">About Us</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">Pricing</a></li>
+            <li><a href="#" class="hover:text-white">Contact</a></li>
+            <li><a href="#" class="hover:text-white">FAQ</a></li>
+            <li><a href="#" class="hover:text-white">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div>
+          <h3 class="text-sm uppercase tracking-widest text-gray-400 mb-4">Support</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">Help Center</a></li>
+            <li><a href="#" class="hover:text-white">Terms</a></li>
+            <li><a href="#" class="hover:text-white">Privacy</a></li>
+            <li><a href="#" class="hover:text-white">Security</a></li>
+            <li><a href="#" class="hover:text-white">Affiliate</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="text-sm uppercase tracking-widest text-gray-400 mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">Products</a></li>
+            <li><a href="#" class="hover:text-white">Enterprise</a></li>
+            <li><a href="#" class="hover:text-white">Features</a></li>
+            <li><a href="#" class="hover:text-white">API</a></li>
+          </ul>
+        </div>
+
+        <!-- Press -->
+        <div>
+          <h3 class="text-sm uppercase tracking-widest text-gray-400 mb-4">Press</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">Investors</a></li>
+            <li><a href="#" class="hover:text-white">Terms of Use</a></li>
+            <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white">Cookie Policy</a></li>
+            <li><a href="#" class="hover:text-white">Legal</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom line -->
+      <div class="relative z-10 border-t border-gray-800 mt-12 pt-6 text-center text-sm text-gray-500">
+        <p>© 2025 All rights reserved</p>
+      </div>
+    </footer>
+
 
 
   <!-- MENU -->
