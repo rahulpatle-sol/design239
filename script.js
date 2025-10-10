@@ -503,44 +503,7 @@ gsap.to(".up-column", {
         updateTestimonial(current);
       });
 
-//        const steps = [
-//     {
-//       number: "1",
-//       title: "Onboarding Call",
-//       desc: "We ask you 50–60 questions about your personal and professional life to help us get into your shoes and understand your stories.",
-//       imageIndex: 0
-//     },
-//     {
-//       number: "2",
-//       title: "Profile Optimization",
-//       desc: "Our team will then work on your headline, bio, banner etc and give you your optimisation in the next 24 hours.",
-//       imageIndex: 1
-//     },
-//     {
-//       number: "3",
-//       title: "Content Pillars",
-//       desc: "We will be using our infamous funnel – TOFU, MOFU, BOFU to give you the perfect mix of topics that you will love.",
-//       imageIndex: 2
-//     },
-//     {
-//       number: "4",
-//       title: "Content Calendar",
-//       desc: "We share a notion board with you with content every Monday. Which means 0 follow ups. Only 15–20 mins of your time to approve content.",
-//       imageIndex: 3
-//     },
-//     {
-//       number: "5",
-//       title: "Graphics Approval",
-//       desc: "To communicate with you in real-time & churn content as per your requirements, we create a WhatsApp/slack group to communicate with you faster.",
-//       imageIndex: 4
-//     },
-//     {
-//       number: "6",
-//       title: "Progress Report",
-//       desc: "We track your progress weekly to understand what's working & then deep dive every month to give you a detailed analysis.",
-//       imageIndex: 5
-//     }
-//   ];
+
 
 //   const images = document.querySelectorAll(".process-img");
 
@@ -624,68 +587,71 @@ mainBtn.addEventListener("onclick",()=>{
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
-  {
-    number: "1",
-    title: "streatgic Call",
-    desc: "We ask you 50–60 questions...",
-    img: "https://images.unsplash.com/photo-1659353219596-80cd21857b52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1hcmtldGluZyUyMHN0cmF0ZWd5JTIwY2FsbHxlbnwwfHwwfHx8MA%3D%3D"
-  },
-  {
-    number: "2",
-    title: "profile Optimization",
-    desc: "We define your brand’s voice...",
-    img: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  },
-  {
-    number: "3",
-    title: "content funnel",
-    desc: "We build the experience...",
-    img: "https://plus.unsplash.com/premium_vector-1744201400607-99dddccd0180?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29udGVudCUyMGZ1bm5lbHxlbnwwfHwwfHx8MA%3D%3D"
-  },
-  {
-    number: "4",
-    title: "content roadmap",
-    desc: "We test across devices...",
-    img: "https://plus.unsplash.com/premium_vector-1720507938681-7d683d11f3a2?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  },
-  {
-    number: "5",
-    title: "design approvel",
-    desc: "We go live with impact...",
-    img: "https://images.unsplash.com/photo-1710799885122-428e63eff691?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  },
-  {
-    number: "6",
-    title: "Progress Analytics &Reporting",
-    desc: "We track performance...",
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  }
-];
+    {
+      number: "1",
+      title: "Strategic Call",
+      desc: "We ask you 50–60 deep-dive questions to understand your brand’s goals, audience, and voice.",
+      img: "https://images.unsplash.com/photo-1659353219596-80cd21857b52?w=500&auto=format&fit=crop&q=60"
+    },
+    {
+      number: "2",
+      title: "Profile Optimization",
+      desc: "We refine your brand presence across platforms to ensure strong, consistent communication.",
+      img: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=870&auto=format&fit=crop"
+    },
+    {
+      number: "3",
+      title: "Content Funnel",
+      desc: "We craft scroll-stopping content tailored to convert attention into engagement.",
+      img: "https://plus.unsplash.com/premium_vector-1744201400607-99dddccd0180?w=500&auto=format&fit=crop"
+    },
+    {
+      number: "4",
+      title: "Content Roadmap",
+      desc: "We develop a timeline and publishing flow to maintain steady, strategic growth.",
+      img: "https://plus.unsplash.com/premium_vector-1720507938681-7d683d11f3a2?q=80&w=1074&auto=format&fit=crop"
+    },
+    {
+      number: "5",
+      title: "Design Approval",
+      desc: "You approve creative visuals that embody your brand’s essence and message.",
+      img: "https://images.unsplash.com/photo-1710799885122-428e63eff691?q=80&w=1287&auto=format&fit=crop"
+    },
+    {
+      number: "6",
+      title: "Analytics & Reporting",
+      desc: "We measure performance, track ROI, and refine strategy to maximize results.",
+      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop"
+    },
+  ];
 
-steps.forEach((step, i) => {
-  ScrollTrigger.create({
-    trigger: ".process-images",
-    start: `${i * 100}vh top`,
-    end: `${(i + 1) * 100}vh top`,
-    onEnter: () => updateStep(i),
-    onEnterBack: () => updateStep(i),
-  });
-});
+  const wrapper = document.querySelector(".wrapper");
 
-function updateStep(i) {
-  document.getElementById("step-number").textContent = steps[i].number;
-  document.getElementById("step-title").textContent = steps[i].title;
-  document.getElementById("step-desc").textContent = steps[i].desc;
-  document.querySelector(".process-card img").src = steps[i].img;
-}
- gsap.registerPlugin(ScrollTrigger);
+  steps.forEach((step, i) => {
+    const card = document.createElement("div");
+    card.className =
+      "process flex flex-col md:flex-row items-center h-92 gap-6 md:gap-10 px-6 py-10";
+    card.innerHTML = `
+      <img src="${step.img}" alt="${step.title}" class="w-full md:w-1/2 h-60 object-cover rounded-xl">
+      <div class="flex flex-col text-center md:text-left">
+        <span class="text-4xl md:text-5xl font-extrabold text-red-500 mb-2">${step.number}</span>
+        <h3 class="text-2xl md:text-3xl font-semibold mb-3">${step.title}</h3>
+        <p class="text-gray-300 leading-relaxed">${step.desc}</p>
+      </div>
+    `;
+    wrapper.appendChild(card);
 
-  gsap.utils.toArray("#about img, #about h2, #about h3, #about p").forEach((el) => {
-    gsap.from(el, {
-      scrollTrigger: { trigger: el, start: "top 85%" },
-      opacity: 0,
-      y: 40,
-      duration: 1,
-      ease: "power3.out",
+    // Scroll stacking animation
+    gsap.to(card, {
+      y: -i * 100,
+      scale: 1 - i * 0.05,
+      scrollTrigger: {
+        trigger: card,
+        start: "top center",
+        end: "bottom top",
+        scrub: true,
+        pin: true,
+        pinSpacing: false
+      }
     });
   });
