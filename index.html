@@ -7,14 +7,27 @@
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Nico+Moji&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/eurostile-extended" rel="stylesheet">
+                <link href="https://fonts.cdnfonts.com/css/rogan" rel="stylesheet">
+                <link href="https://fonts.cdnfonts.com/css/smooch-sans" rel="stylesheet">
+                
   <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
   <style>
-    
+    @import url('https://fonts.cdnfonts.com/css/eurostile-extended');
+
+                            @import url('https://fonts.cdnfonts.com/css/smooch-sans');
+
+                
     body { 
 
       color: white;
       background: #000;
       overflow-x: hidden;
+
+    }
+    /* Hero Section */
+    #main{
+      font-family: 'Nico Moji', sans-serif;
     }
 /* Cursor when active */
 .cursor-active {
@@ -51,8 +64,43 @@
   opacity: 0.8;
   filter: blur(60px);
 }
+#why-us{
+ font-family: 'Nico Moji', sans-serif;
+  font-weight: 700;     
+  font-size: medium;
+  font-style: italic; 
+  background: #000;
+  color: white;
 
-    #cursor { 
+}
+#infinite-services{
+
+  background: #000;
+  color: white;
+flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: x-small;}
+
+#infinite-services h2{
+ 
+
+font-weight: 300;
+  font-family: "Nico Moji", sans-serif;
+}
+
+.scroll-card {  
+  background: rgb(0, 0, 0);
+        backdrop-filter: blur(12px);
+        transition: all 0.4s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .scroll-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+cursor { 
       position: fixed; top: 0; left: 0;
         height: 30px;
       width: 3dvh;
@@ -76,7 +124,12 @@
       padding: 40px;
     }
 
-
+#about{
+  font-family: 'Nico Moji', sans-serif;
+font-size: medium;
+  background: #000;
+  color: white;
+}
     /* Rotating Background PNG */
     #rotating-bg {
       position: absolute;
@@ -140,7 +193,14 @@
         transform: translateY(-10px);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       }
-      
+      .glasshead{
+        font-family: 'Nico Moji', sans-serif;
+
+        font-weight: 700;
+        font-size: medium;
+
+
+      }
   .up-column {
     animation: moveUp 10s linear infinite;
   }
@@ -180,7 +240,8 @@
   <div id="cursor"></div>
 
   <!-- Hero Section -->
-  <section id="main" class="h-screen flex flex-col items-center justify-center text-center relative overflow-hidden">
+  <section id="main" class="h-screen flex flex-col items-center justify-center text-center relative overflow-hidden font-eurostile-extended">
+    <!-- Logo -->
 <div class="w-40 h-auto absolute top-0 left-0"><img src="./assets/logo.png" alt="logo"></div>
     <!-- Rotating PNG background -->
     <div id="rotating-bg"></div>
@@ -204,7 +265,7 @@ Get Started
     <div id="blob" class="absolute w-[400px] h-[400px] rounded-full bg-indigo-500 blur-3xl opacity-30"></div>
   </section>
 <!--  about section  -->
-<section id="about" class="bg-black text-white px-6 py-16 md:px-10 lg:px-20">
+<section id="about" class="bg-black text-white px-6 py-16 md:px-10 lg:px-20  ">
   <div class="max-w-7xl mx-auto flex flex-col gap-20">
 
     <!-- 🔹 Row 1: Image + ABOUT -->
@@ -279,7 +340,7 @@ Get Started
 
   -->
 
-<section id="why-us" class="bg-black text-white py-20 px-6 md:px-20">
+<section id="why-us" class="bg-black text-white py-20 px-6 md:px-20 font-eurostile-extended font-rogan">
   <div class="max-w-7xl mx-auto">
     
     <!-- Heading -->
@@ -335,7 +396,7 @@ Get Started
       <div class="max-w-7xl mx-auto text-center">
         <!-- Heading -->
         <div class="mb-12">
-          <h2 class="text-3xl md:text-5xl font-bold leading-tight mb-4">
+          <h2 class="text-3xl md:text-5xl  leading-tight font-'Nico MoJi' mb-4">
             Your SEARCH 🔍 FOR A <span class="text-yellow-400">SOCIAL MEDIA MARKETING</span> & 
             <span class="text-yellow-400">BRANDING</span> ENDS HERE...
           </h2>
@@ -346,10 +407,10 @@ Get Started
         <div class="relative w-full overflow-hidden">
           <div id="scroll-track" class="flex gap-6 whitespace-nowrap">
             <!-- Repeatable Cards -->
-            <div class="scroll-card bg-gray-900 px-8 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
+            <div class="scroll-card bg-gray-900 px-12 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
               Faster Go-To Market
             </div>
-            <div class="scroll-card bg-gray-900 px-8 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
+            <div class="scroll-card bg-gray-900 px-20 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[300px] flex items-center justify-center">
               Industry-wide Experience
             </div>
             <div class="scroll-card bg-gray-900 px-8 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
@@ -386,49 +447,79 @@ Get Started
 
       <!-- Downward Column -->
       <div class="down-column flex flex-col gap-6">
-        <div class="glass-card bg-gradient-to-bl from-violet-500 to-fuchsia-500">
-          <div class="glass-icon">📸</div>
-          <div>Instagram Management</div>
+        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
+          <div class="glass-icon text-2xl mb-2">📸</div>
+          <div>
+            <strong>Instagram Management</strong>
+            <p class="text-sm text-gray-400">+100 followers/week • Monthly strategy • Viral edits</p>
+          </div>
         </div>
-        <div class="glass-card bg-gradient-to-r from-cyan-500 to-blue-500">
-          <div class="glass-icon">💼</div>
-          <div>LinkedIn Writing</div>
+        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
+          <div class="glass-icon text-2xl mb-2">💼</div>
+          <div>
+            <strong>LinkedIn Writing</strong>
+            <p class="text-sm text-gray-400">Personalized posts • Thought leadership • DM-ready content</p>
+          </div>
         </div>
-        <div class="glass-card bg-gradient-to-tr from-orange-400 to-pink-500">
-          <div class="glass-icon">🎬</div>
-          <div>Reels Editing</div>
+        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
+          <div class="glass-icon text-2xl mb-2">🎬</div>
+          <div>
+            <strong>Reels Editing</strong>
+            <p class="text-sm text-gray-400">Cinematic cuts • Hook-based storytelling • Trend sync</p>
+          </div>
         </div>
-        <div class="glass-card bg-gradient-to-br from-teal-400 to-green-500">
-          <div class="glass-icon">🧠</div>
-          <div>Personal Branding</div>
+        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
+          <div class="glass-icon text-2xl mb-2">🧠</div>
+          <div>
+            <strong>Personal Branding</strong>
+            <p class="text-sm text-gray-400">Voice clarity • Visual identity • Trust-building assets</p>
+          </div>
         </div>
-        <div class="glass-card bg-gradient-to-l from-yellow-400 to-red-500">
-          <div class="glass-icon">🌀</div>
-          <div>Carousel Design</div>
+        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
+          <div class="glass-icon text-2xl mb-2">🌀</div>
+          <div>
+            <strong>Carousel Design</strong>
+            <p class="text-sm text-gray-400">Swipe-worthy layouts • Story-driven flow • CTA optimized</p>
+          </div>
         </div>
       </div>
 
       <!-- Upward Column -->
       <div class="up-column flex flex-col gap-6">
-        <div class="glass-card bg-gradient-to-r from-purple-500 to-indigo-500">
-          <div class="glass-icon">📈</div>
-          <div>Social Strategy</div>
+        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
+          <div class="glass-icon text-2xl mb-2">📈</div>
+          <div>
+            <strong>Social Strategy</strong>
+            <p class="text-sm text-gray-400">Platform roadmap • Weekly goals • Growth tracking</p>
+          </div>
         </div>
-        <div class="glass-card bg-gradient-to-t from-rose-400 to-purple-400">
-          <div class="glass-icon">🧩</div>
-          <div>Profile Optimization</div>
+        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
+          <div class="glass-icon text-2xl mb-2">🧩</div>
+          <div>
+            <strong>Profile Optimization</strong>
+            <p class="text-sm text-gray-400">Bio revamp • Highlight curation • Link strategy</p>
+          </div>
         </div>
-        <div class="glass-card bg-gradient-to-bl from-sky-500 to-blue-700">
-          <div class="glass-icon">📘</div>
-          <div>Facebook Management</div>
+        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
+          <div class="glass-icon text-2xl mb-2">📘</div>
+          <div>
+            <strong>Facebook Management</strong>
+            <p class="text-sm text-gray-400">Page growth • Post scheduling • Ad-ready content</p>
+          </div>
         </div>
-        <div class="glass-card bg-gradient-to-tr from-lime-400 to-emerald-500">
-          <div class="glass-icon">🚀</div>
-          <div>Startup Branding</div>
+        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
+          <div class="glass-icon text-2xl mb-2">🚀</div>
+          <div>
+            <strong>Startup Branding</strong>
+            <p class="text-sm text-gray-400">Logo + voice • Launch kit • Brand guidelines</p>
+          </div>
         </div>
-        <div class="glass-card bg-gradient-to-br from-red-400 to-pink-600">
-          <div class="glass-icon">🎨</div>
-          <div>Creative Post Design</div>
+        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
+          <div class="glass-icon text-2xl mb-2">🎨</div>
+          <div>
+            <strong>Creative Post Design</strong>
+            <p class="text-sm text-gray-400">Scroll-stopping visuals • Custom icons • Motion graphics</p>
+          </div>
         </div>
       </div>
 
@@ -436,12 +527,13 @@ Get Started
 
     <!-- Right Section: Static Heading -->
     <div class="text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-6">What You’ll Get</h2>
+      <h2 class="glassHead text-4xl md:text-5xl  mb-6">What You’ll Get</h2>
       <p class="text-gray-400 text-sm md:text-base">Growth. Engagement. Identity. Everything your brand needs to stand out.</p>
     </div>
 
   </div>
 </section>
+
 
 
 <!--  process section  -->
@@ -465,79 +557,82 @@ Get Started
 
  
 <section id="portfolio" class="min-h-screen overflow-hidden relative bg-black text-white py-20">
-    <div class="max-w-6xl mx-auto px-4 space-y-20">
+  <div class="max-w-6xl mx-auto px-4 space-y-20">
 
-      <!-- Project 1 -->
-      <div class="project-item relative flex flex-col md:flex-row items-center md:items-stretch overflow-hidden">
-        <div class="w-full md:w-1/2 h-64 md:h-auto relative border">
-          <!-- overlay container -->
-          <div class="overlay absolute inset-0 bg-black z-10"></div>
-          <img
-            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1000&auto=format&fit=crop&q=60"
-            alt="Project 1"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
-          <div class="content opacity-0 translate-y-10">
-            <h3 class="text-2xl md:text-3xl font-bold mb-4">Project 1 Title</h3>
-            <p class="text-base md:text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quam.
-            </p>
-          </div>
+    <!-- Project 1 -->
+    <div class="project-item relative flex flex-col md:flex-row items-center md:items-stretch overflow-hidden">
+      <div class="w-full md:w-1/2 h-64 md:h-auto relative border">
+        <div class="overlay absolute inset-0 bg-black z-10"></div>
+        <img src="./assets/project/ux.png" alt="Project 1" class="w-full h-full object-cover" />
+      </div>
+      <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
+        <div class="content opacity-0 translate-y-10 space-y-4">
+          <h3 class="text-3xl md:text-4xl font-bold tracking-tight leading-snug text-white">FeelUX by Vbizgro Studio</h3>
+          <p class="text-base md:text-lg text-gray-300 leading-relaxed">
+            That’s the philosophy behind <span class="text-white font-semibold">FeelUX</span>, a flagship experience crafted by Vbizgro Studio for ECOAVENSTRA.<br><br>
+            We didn’t just design screens—we engineered <span class="text-white font-semibold">emotion</span>. Every swipe, tap, and transition was built to feel intuitive, invisible, and unforgettable.<br><br>
+            From login flows to financial dashboards, we focused on what users <span class="text-white font-semibold">feel</span>—not just what they see.<br><br>
+            The result? A product that doesn’t scream design—it <span class="italic text-white/80">whispers clarity, confidence, and trust</span>.
+          </p>
+          <p class="text-sm text-gray-500 italic">Learn. Work. Earn. That’s ECOAVENSTRA’s promise. FeelUX makes sure users believe it from the first touch.</p>
         </div>
       </div>
-
-      <!-- Project 2 -->
-      <div class="project-item relative flex flex-col md:flex-row-reverse items-center md:items-stretch overflow-hidden">
-        <div class="w-full md:w-1/2 h-64 md:h-auto relative border">
-          <div class="overlay absolute inset-0 bg-black z-10"></div>
-          <img
-            src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=1000&auto=format&fit=crop&q=60"
-            alt="Project 2"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
-          <div class="content opacity-0 translate-y-10">
-            <h3 class="text-2xl md:text-3xl font-bold mb-4">Project 2 Title</h3>
-            <p class="text-base md:text-lg">
-              Some description about project 2. Explain what was done.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="project-item relative flex flex-col md:flex-row items-center md:items-stretch overflow-hidden">
-        <div class="w-full md:w-1/2 h-64 md:h-auto relative border">
-          <div class="overlay absolute inset-0 bg-black z-10"></div>
-          <img
-            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000&auto=format&fit=crop&q=60"
-            alt="Project 3"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
-          <div class="content opacity-0 translate-y-10">
-            <h3 class="text-2xl md:text-3xl font-bold mb-4">Project 3 Title</h3>
-            <p class="text-base md:text-lg">
-              Some description about project 3. More details.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- See More / CTA -->
-      <div class="text-center px-4">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 opacity-0 translate-y-10">See More Projects</h2>
-        <p class="max-w-3xl mx-auto text-base md:text-lg opacity-0 translate-y-10">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptas error dolores repellendus, autem maxime? Sequi repellendus in praesentium...
-        </p>
-      </div>
-
     </div>
-  </section>
+
+    <!-- Project 2 -->
+    <div class="project-item relative flex flex-col md:flex-row-reverse items-center md:items-stretch overflow-hidden">
+      <div class="w-full md:w-1/2 h-64 md:h-auto relative border">
+        <div class="overlay absolute inset-0 bg-black z-10"></div>
+        <img src="./assets/project/web.png" alt="Project 2" class="w-full h-full object-cover" />
+      </div>
+      <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
+        <div class="content opacity-0 translate-y-10 space-y-4">
+          <h3 class="text-3xl md:text-4xl font-bold tracking-tight leading-snug text-white">NextSite by EcoAvenstra</h3>
+          <p class="text-base md:text-lg text-gray-300 leading-relaxed">
+            Your competitors just upgraded. Did you?<br><br>
+            NextSite is EcoAvenstra’s elite web development solution for brands that refuse to fall behind.<br><br>
+            We don’t build websites—we engineer <span class="text-white font-semibold">digital dominance</span>. With floating UI mockups, responsive layouts, and conversion-first design, NextSite turns your online presence into a growth engine.<br><br>
+            Whether you're a startup or scaling enterprise, this isn’t just a redesign—it’s a <span class="italic text-white/80">reinvention</span>.
+          </p>
+          <p class="text-sm text-gray-500 italic">Learn. Work. Earn. That’s the EcoAvenstra promise. NextSite makes sure your brand delivers it with every pixel.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-item relative flex flex-col md:flex-row items-center md:items-stretch overflow-hidden">
+      <div class="w-full md:w-1/2 h-64 md:h-auto relative border">
+        <div class="overlay absolute inset-0 bg-black z-10"></div>
+        <img src="assets/project/design.png" alt="Project 3" class="w-full h-full object-cover" />
+      </div>
+      <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
+        <div class="content opacity-0 translate-y-10 space-y-4">
+          <h3 class="text-3xl md:text-4xl font-bold tracking-tight leading-snug text-white">LinkedIn Launchpad</h3>
+          <p class="text-base md:text-lg text-gray-300 leading-relaxed">
+            LinkedIn Launchpad is a carousel-based content series designed to turn professionals into personal brands.<br><br>
+            Built for scroll-stopping impact, each panel delivers a strategic punch—from niche clarity to thought leadership and visual storytelling.<br><br>
+            We didn’t just design a carousel—we built a <span class="text-white font-semibold">conversion engine</span>.
+          </p>
+          <p class="text-sm text-gray-500 italic">Whether you're a coach, founder, or creator, this series helps you show up with authority, clarity, and style. Because great branding isn’t just seen—it’s felt.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center px-4 space-y-4">
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-snug text-white opacity-0 translate-y-10">See More Projects</h2>
+      <p class="max-w-3xl mx-auto text-base md:text-lg text-gray-400 opacity-0 translate-y-10">
+        Want to see how we can transform your brand? 
+        <a href="#" class="text-blue-500 underline hover:text-blue-400 transition duration-200 ease-in-out">View our full portfolio</a> 
+        and discover the Vbizgro difference.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
 
    <section id="pricing" class="max-w-6xl mx-auto py-20">
       <h2 class="text-4xl font-bold text-center mb-16">Pricing Plans</h2>
@@ -665,58 +760,76 @@ Get Started
     </section>
 
 
-    <section id="contact" class="min-h-screen flex items-center justify-center px-6">
-    <div class="max-w-6xl w-full rounded-2xl shadow-md p-10 md:p-16 overflow-hidden">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
+<section id="contact" class="min-h-screen bg-black text-white px-6 py-20">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
 
-        <!-- Left content -->
-        <div class="contact-left opacity-0 translate-y-10">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Inquire about social media  packaging services</h2>
-          <p class="text-gray-700 mb-8">
-            We tackle any packaging problem, so don't hesitate to contact us!
-          </p>
-          <div class="overflow-hidden rounded-xl shadow-md">
-            <img src="./assets/contactus.jpg" 
-                 alt="abstract design" 
-                 class="contact-img rounded-xl scale-100 hover:scale-105 transition-transform duration-700 ease-out">
-          </div>
+    <!-- Left Panel: Contact Options + Image -->
+    <div class="space-y-8">
+      <h2 class="text-4xl font-bold leading-tight text-white">
+        Are you a brand? Just want to learn more?
+      </h2>
+
+      <div class="space-y-6">
+        <div class="bg-[#111] border border-gray-800 rounded-xl p-6 shadow-md">
+          <p class="text-lg font-semibold text-white">Have questions about packaging?</p>
+          <p class="text-sm text-gray-400">Email us at <a href="mailto:whales@vbizgro.com" class="text-blue-500 underline hover:text-blue-400">whales@vbizgro.com</a></p>
         </div>
 
-        <!-- Right form -->
-        <form class="contact-form space-y-6 opacity-0 translate-y-10">
-          <div class="input-line">
-            <label class="block font-medium text-gray-800">What’s your name? <span class="text-red-500">*</span></label>
-            <input type="text" placeholder="Type name" class="w-full bg-transparent outline-none py-2" required />
-          </div>
+        <div class="bg-[#111] border border-gray-800 rounded-xl p-6 shadow-md">
+          <p class="text-lg font-semibold text-white">Prefer to email directly?</p>
+          <p class="text-sm text-gray-400">Reach us at <a href="mailto:info@vbizgro.com" class="text-blue-500 underline hover:text-blue-400">info@vbizgro.com</a></p>
+        </div>
 
-          <div class="input-line">
-            <label class="block font-medium text-gray-800">What’s your email address? <span class="text-red-500">*</span></label>
-            <input type="email" placeholder="Type email address" class="w-full bg-transparent outline-none py-2" required />
-          </div>
-
-          <div class="input-line">
-            <label class="block font-medium text-gray-800">What’s your company?</label>
-            <input type="text" placeholder="Type company name" class="w-full bg-transparent outline-none py-2" />
-          </div>
-
-          <div class="input-line">
-            <label class="block font-medium text-gray-800">What’s your phone number?</label>
-            <input type="tel" placeholder="Type phone number" class="w-full bg-transparent outline-none py-2" />
-          </div>
-
-          <div class="input-line">
-            <label class="block font-medium text-gray-800">How can we help you? <span class="text-red-500">*</span></label>
-            <textarea placeholder="A brief message here" rows="3" class="w-full bg-transparent outline-none py-2 resize-none"></textarea>
-          </div>
-
-          <button class="mt-4 px-6 py-3 bg-blue-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-all duration-300 hover:scale-105 shadow-md">
-            Submit Request
+        <div class="bg-[#111] border border-gray-800 rounded-xl p-6 shadow-md">
+          <p class="text-lg font-semibold text-white">Already a client or want to be?</p>
+          <button class="mt-2 px-4 py-2 bg-blue-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-all duration-300 hover:scale-105 shadow-md">
+            Tell us how we can help
           </button>
-        </form>
+        </div>
+      </div>
 
+      <div class="overflow-hidden rounded-xl shadow-md mt-6">
+        <img src="./assets/contactus.jpg" alt="abstract design" class="rounded-xl scale-100 hover:scale-105 transition-transform duration-700 ease-out" />
       </div>
     </div>
-  </section>
+
+    <!-- Right Panel: Form -->
+    <form class="space-y-6 bg-[#111] border border-gray-800 rounded-xl p-8 shadow-md">
+      <h3 class="text-2xl font-bold mb-4 text-white">Send a Request</h3>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1">Name <span class="text-red-500">*</span></label>
+        <input type="text" placeholder="Your name" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none" required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1">Email <span class="text-red-500">*</span></label>
+        <input type="email" placeholder="Your email" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none" required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1">Company</label>
+        <input type="text" placeholder="Company name" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1">Phone</label>
+        <input type="tel" placeholder="Phone number" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1">Message <span class="text-red-500">*</span></label>
+        <textarea rows="3" placeholder="How can we help you?" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none resize-none"></textarea>
+      </div>
+
+      <button class="mt-4 px-6 py-3 bg-blue-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-all duration-300 hover:scale-105 shadow-md">
+        Submit Request
+      </button>
+    </form>
+
+  </div>
+</section>
+
 <footer class="relative bg-black border-t border-gray-800 py-20 overflow-hidden font-inter">
   <!-- Glowing chip background -->
   <img src="https://images.unsplash.com/photo-1681101378971-5f5dc4e5000e?q=80&w=1657&auto=format&fit=crop" alt="Tech Background" class="absolute inset-0 w-full h-full object-cover opacity-10 z-0" />
@@ -816,15 +929,20 @@ Get Started
   </div>
 
   <!-- Navigation Links -->
-  <div class="flex flex-col items-center gap-6 mt-20">
-    <a href="#main" class="hover:text-indigo-400 transition duration-300">Home</a>
-    <a href="#services" class="hover:text-indigo-400 transition duration-300">Services</a>
-    <a href="#portfolio" class="hover:text-indigo-400 transition duration-300">Portfolio</a>
-  </div>
+<div class="flex flex-col items-center gap-6 mt-20">
+  <a href="#main" class="hover:text-indigo-400 transition duration-300">Home</a>
+  <a href="#services" class="hover:text-indigo-400 transition duration-300">Services</a>
+  <a href="#portfolio" class="hover:text-indigo-400 transition duration-300">Portfolio</a>
+  <a href="#work" class="hover:text-indigo-400 transition duration-300">Work</a>
+  <a href="#about" class="hover:text-indigo-400 transition duration-300">About Us</a>
+  <a href="#pricing" class="hover:text-indigo-400 transition duration-300">Pricing</a>
+  <a href="#speciality" class="hover:text-indigo-400 transition duration-300">Speciality</a>
+</div>
+
 </div>
 
 <!-- MENU BUTTON -->
-<button id="menuBtn" class="fixed top-6 right-6 z-50 text-white text-3xl">☰</button>
+<button id="menuBtn" class="fixed top-6 right-6 z-50 text-white text-3xl">☰</button> 
 
 
   <!-- GSAP -->
