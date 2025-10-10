@@ -10,7 +10,7 @@
   
   <style>
     body { 
-      font-family: 'Nico Moji', sans-serif;
+
       color: white;
       background: #000;
       overflow-x: hidden;
@@ -39,12 +39,26 @@
       position: fixed; top: 0; left: 0;
         height: 30px;
       width: 3dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 2px solid white; border-radius: 50%;
       pointer-events: none; mix-blend-mode: difference;
       transform: translate(-50%, -50%); 
       transition: transform 0.15s ease-out;
       z-index: 9999;
     }
+    .cursor-active{
+      font: 600;
+      background: rgb(255, 255, 255);
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      font-size: medium;
+      padding: 40px;
+    }
+
 
     /* Rotating Background PNG */
     #rotating-bg {
@@ -105,8 +119,26 @@
         text-align: center;
         transition: transform 0.3s ease;
       }
+      .glass-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      }
+      
+  .up-column {
+    animation: moveUp 10s linear infinite;
+  }
+  .down-column {
+    animation: moveDown 10s linear infinite;
+  }
 
-
+  @keyframes moveUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+  @keyframes moveDown {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(50%); }
+  }
       .glass-card {
     @apply flex items-center justify-center p-8 m-4 h-64 rounded-xl text-transparent bg-clip-text text-center font-bold text-2xl backdrop-blur-md shadow-md transition duration-500 ease-in-out transform;
   }
@@ -155,47 +187,71 @@ Get Started
     <div id="blob" class="absolute w-[400px] h-[400px] rounded-full bg-indigo-500 blur-3xl opacity-30"></div>
   </section>
 <!--  about section  -->
-<section id="about" class="bg-black text-white px-8 py-20">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<section id="about" class="bg-black text-white px-6 py-16 md:px-10 lg:px-20">
+  <div class="max-w-7xl mx-auto flex flex-col gap-20">
 
-    <!-- Left Image -->
-    <div class="col-span-1 flex items-center justify-center">
-      <img src="https://images.unsplash.com/photo-1633457519574-29c294d1805c?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="About" class="rounded-2xl object-cover w-full h-64 lg:h-full" />
+    <!-- 🔹 Row 1: Image + ABOUT -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
+      <!-- Left Image -->
+      <div class="flex justify-center">
+        <img
+          src="https://images.unsplash.com/photo-1633457519574-29c294d1805c?q=80&w=627&auto=format&fit=crop"
+          alt="About"
+          class="rounded-2xl object-cover w-full lg:w-4/5 h-64 lg:h-[450px]"
+        />
+      </div>
+
+      <!-- Right ABOUT text -->
+      <div class="flex justify-center lg:justify-start text-center lg:text-left">
+        <h2 class="text-5xl lg:text-7xl font-bold tracking-wide">ABOUT</h2>
+      </div>
     </div>
 
-    <!-- Center ABOUT text -->
-    <div class="col-span-1 flex flex-col items-center justify-center text-center">
-      <h2 class="text-5xl lg:text-6xl font-semibold">ABOUT</h2>
-    </div>
-
-    <!-- Top Right Text -->
-    <div class="col-span-1 flex flex-col justify-center">
-      <h3 class="text-lg font-bold mb-3">OVERVIEW</h3>
-      <p class="text-gray-300 leading-relaxed text-sm lg:text-base">
-        Vbizgro is a social media agency that helps startups, coaches, and local businesses grow online.<br />
-        We create content that gets attention, builds trust, and brings in real results.
-      </p>
-    </div>
-
-    <!-- Our Mission (Bottom Left) -->
-    <div class="col-span-2 lg:col-span-2 flex flex-col lg:flex-row items-center gap-6">
-      <div class="flex-1">
-        <h3 class="text-2xl font-bold mb-4">OUR MISSION</h3>
-        <p class="text-gray-300 leading-relaxed">
-          Since our beginning, we’ve been passionate about helping companies of all sizes connect with their audience.
-          From startups to established enterprises, our approach is built on creativity, innovation, and measurable results.
+    <!-- 🔹 Row 2: Overview -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
+      <div>
+        <h3 class="text-2xl font-bold mb-3">OVERVIEW</h3>
+        <p class="text-gray-300 leading-relaxed text-base md:text-lg max-w-lg">
+          Vbizgro is a social media agency that helps startups, coaches, and local
+          businesses grow online. <br /><br />
+          We create content that gets attention, builds trust, and brings in real results.
         </p>
       </div>
-      <img src="./assets/mission.png" alt="Mission" class="rounded-xl w-full lg:w-1/3 h-56 object-cover" />
+
+      <div class="flex justify-center lg:justify-end">
+        <img
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1170&auto=format&fit=crop"
+          alt="Consultant"
+          class="rounded-xl object-cover w-full lg:w-4/5 h-64 lg:h-[400px]"
+        />
+      </div>
     </div>
 
-    <!-- Bottom Right Image -->
-    <div class="col-span-1 flex items-center justify-center">
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Consultant" class="rounded-xl object-cover w-full h-64 lg:h-full" />
-    </div>
+    <!-- 🔹 Row 3: Our Mission -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
+      <!-- Mission text -->
+      <div class="order-2 lg:order-1">
+        <h3 class="text-2xl font-bold mb-4">OUR MISSION</h3>
+        <p class="text-gray-300 leading-relaxed text-base md:text-lg max-w-lg">
+          Since our beginning, we’ve been passionate about helping companies of all
+          sizes connect with their audience. From startups to established enterprises,
+          our approach is built on creativity, innovation, and measurable results.
+        </p>
+      </div>
 
+      <!-- Mission image -->
+      <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+        <img
+          src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68?q=80&w=1170&auto=format&fit=crop"
+          alt="Mission"
+          class="rounded-xl object-cover w-full lg:w-4/5 h-64 lg:h-[400px]"
+        />
+      </div>
+    </div>
   </div>
 </section>
+
+
 
 
 
@@ -258,31 +314,51 @@ Get Started
   <!-- SERVICES FLIP  CARD EFFECT -->
 
 
-<section id="infinite-services" class="bg-black text-white py-20 px-6 md:px-20 overflow-hidden">
-  <div class="max-w-7xl mx-auto">
-    <!-- Heading -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Your SEARCH 🔍 FOR A SOCIAL  MEDIA MARKETING & BRANDING  ENDS HERE...</h2>
-      <div class="w-3 h-3 rounded-full bg-white mx-auto"></div>
-    </div>
+section id="infinite-services" class="py-20 px-6 md:px-20 overflow-hidden">
+      <div class="max-w-7xl mx-auto text-center">
+        <!-- Heading -->
+        <div class="mb-12">
+          <h2 class="text-3xl md:text-5xl font-bold leading-tight mb-4">
+            Your SEARCH 🔍 FOR A <span class="text-yellow-400">SOCIAL MEDIA MARKETING</span> & 
+            <span class="text-yellow-400">BRANDING</span> ENDS HERE...
+          </h2>
+          <div class="w-4 h-4 rounded-full bg-yellow-400 mx-auto"></div>
+        </div>
 
-    <!-- Scrolling Track -->
-    <div class="relative">
-      <div id="scroll-track" class="flex gap-6 whitespace-nowrap">
-        <!-- Repeatable Cards -->
-        <div class="scroll-card h-24 flex item-center  text-center bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Faster Go-To Market</div>
-        <div class="scroll-card bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Industry-wide Experience</div>
-        <div class="scroll-card bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Flexible Engagement</div>
-        <div class="scroll-card bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Driven by Results</div>
-        <!-- Duplicate for seamless loop -->
-        <div class="scroll-card bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Faster Go-To Market</div>
-        <div class="scroll-card bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Industry-wide Experience</div>
-        <div class="scroll-card bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Flexible Engagement</div>
-        <div class="scroll-card bg-gray-900 px-6 py-4 rounded-xl text-white text-sm font-medium">Driven by Results</div>
+        <!-- Scrolling Track -->
+        <div class="relative w-full overflow-hidden">
+          <div id="scroll-track" class="flex gap-6 whitespace-nowrap">
+            <!-- Repeatable Cards -->
+            <div class="scroll-card bg-gray-900 px-8 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
+              Faster Go-To Market
+            </div>
+            <div class="scroll-card bg-gray-900 px-8 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
+              Industry-wide Experience
+            </div>
+            <div class="scroll-card bg-gray-900 px-8 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
+              Flexible Engagement
+            </div>
+            <div class="scroll-card bg-gray-900 px-8 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
+              Driven by Results
+            </div>
+
+            <!-- Duplicate for seamless loop -->
+            <div class="scroll-card bg-gray-900 px-8 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
+              Faster Go-To Market
+            </div>
+            <div class="scroll-card bg-gray-900 px-8 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
+              Industry-wide Experience
+            </div>
+            <div class="scroll-card bg-gray-900 px-8 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
+              Flexible Engagement
+            </div>
+            <div class="scroll-card bg-gray-900 px-8 py-4 rounded-2xl text-base md:text-lg font-semibold min-w-[220px] flex items-center justify-center">
+              Driven by Results
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 <!-- services 
   -->
 <section id="glass-ui" class="w-full bg-black text-white py-20 px-6 md:px-20">

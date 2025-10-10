@@ -152,7 +152,10 @@ gsap.to(videoContainer, {
  aboutSection.addEventListener("mouseenter", () => {
   // Cursor grows + shows text
   cursor.classList.add("cursor-active");
-  cursor.innerHTML = `<span class="text-xl  text-black font-semibold w-full ">View More</span>`;
+  cursor.innerHTML = `<span class="text-xl text-black font-semibold w-full h-full flex items-center justify-center">
+  View More
+</span>
+`;
 
   // Blob changes to fire glow
   blob.classList.add("blob-active");
@@ -168,7 +171,7 @@ aboutSection.addEventListener("mouseleave", () => {
 });
 // anime
 gsap.fromTo(blob, 
-  { scale: 0.8, opacity: 0.5 },
+  { scale: 2, opacity: 0.5 },
   {
     scale: 1.2,
     opacity: 0.9,
@@ -226,6 +229,8 @@ gsap.to(scrollTrack, {
       scrub: true,
     });
   });
+
+
 
   // Hover effect for individual cards
   document.querySelectorAll("#why-chose .grid > div").forEach(card => {
@@ -673,3 +678,14 @@ function updateStep(i) {
   document.getElementById("step-desc").textContent = steps[i].desc;
   document.querySelector(".process-card img").src = steps[i].img;
 }
+ gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray("#about img, #about h2, #about h3, #about p").forEach((el) => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: "top 85%" },
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      ease: "power3.out",
+    });
+  });
