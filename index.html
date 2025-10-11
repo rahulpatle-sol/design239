@@ -24,23 +24,70 @@
       background: #000;
       overflow-x: hidden;
 
-    }
+    }/* Infinite sliding animation for team images */
+      @keyframes slide {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .scroll-track {
+        display: flex;
+        width: 200%;
+        animation: slide 25s linear infinite;
+      }
+
+      .scroll-track:hover {
+        animation-play-state: paused;
+      }
     /* Hero Section */
     #main{
       font-family: 'Nico Moji', sans-serif;
     }
 /* Cursor when active */
-.cursor-active {
-  width: 100px;
-  height: 100px;
-  background-color: rgba(255, 255, 255, 0.452);
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  font-family: 'Orbitron', sans-serif;
-}
+
+#cursor { 
+      position: fixed; top: 0; left: 0;
+        height: 30px;
+      width: 3dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid white; border-radius: 50%;
+      pointer-events: none; mix-blend-mode: difference;
+      transform: translate(-50%, -50%); 
+      transition: transform 0.15s ease-out;
+      z-index: 9999;
+    }
+    .cursor-active{
+      font: 600;
+      background: rgb(255, 255, 255);
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      font-size: medium;
+      padding: 40px;
+    }
+
+#blob{
+      position: fixed; top: 0; left: 0;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #388dfd, #68bae27a, #010101);
+      opacity: 0.3; filter: blur(60px);
+      pointer-events: none; mix-blend-mode: screen;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease-out;
+      z-index: 9998;
+    }
+
+    /* Process Section */   
+
+
 .wrapper {
   position: sticky;
   top: 100px;
@@ -57,7 +104,8 @@
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
   transform-origin: top center;
 }
-
+ .font-nico-moji { font-family: 'Nico Moji', monospace; }
+  .font-roboto { font-family: 'Roboto', sans-serif; }
 /* Blob fire glow */
 .blob-active {
   background-image: radial-gradient(circle at center, #ff6a00, #ff0000, #ff0066);
@@ -100,29 +148,6 @@ font-weight: 300;
         transform: translateY(-10px);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
-cursor { 
-      position: fixed; top: 0; left: 0;
-        height: 30px;
-      width: 3dvh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid white; border-radius: 50%;
-      pointer-events: none; mix-blend-mode: difference;
-      transform: translate(-50%, -50%); 
-      transition: transform 0.15s ease-out;
-      z-index: 9999;
-    }
-    .cursor-active{
-      font: 600;
-      background: rgb(255, 255, 255);
-      display: flex;
-      align-items: center;
-      text-align: center;
-      justify-content: center;
-      font-size: medium;
-      padding: 40px;
-    }
 
 #about{
   font-family: 'Nico Moji', sans-serif;
@@ -231,18 +256,91 @@ font-size: medium;
   .glass-icon {
     @apply text-4xl;
   }
+
+   @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-out;
+  }
   </style>
 </head>
 
 <body class="overflow-x-hidden relative">
+<!-- Navbar -->
+<header
+  class="fixed top-0 left-0 w-full bg-[#0b0b0b]/90 backdrop-blur-md z-50 border-b border-gray-800 shadow-sm"
+>
+  <div
+    class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6 md:px-10"
+  >
+    <!-- LOGO -->
+    <div class="flex items-center">
+      <img
+        src="./assets/logo.png"
+        alt="Logo"
+        height="40"
+        width="70"
+        class="object-contain"
+      />
+    </div>
+
+    <!-- NAV LINKS (DESKTOP) -->
+    <nav
+      id="navLinks"
+      class="hidden md:flex items-center gap-8 text-gray-300 font-medium"
+    >
+      <a href="#services" class="hover:text-indigo-400 transition duration-300">Services</a>
+      <a href="#portfolio" class="hover:text-indigo-400 transition duration-300">Portfolio</a>
+      <a href="#work" class="hover:text-indigo-400 transition duration-300">Work</a>
+      <a href="#about" class="hover:text-indigo-400 transition duration-300">About Us</a>
+      <a href="#pricing" class="hover:text-indigo-400 transition duration-300">Pricing</a>
+      <a href="#speciality" class="hover:text-indigo-400 transition duration-300">Speciality</a>
+    </nav>
+
+    <!-- MENU BUTTON (MOBILE) -->
+    <button
+      id="menuBtn"
+      class="md:hidden text-3xl text-white focus:outline-none transition-transform duration-300 hover:scale-110"
+    >
+      <i class="ri-menu-3-line"></i>
+    </button>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div
+    id="mobileMenu"
+    class="hidden flex-col items-center gap-6 bg-[#0b0b0b] border-t border-gray-800 py-8 text-gray-300 font-medium md:hidden transition-all duration-500 ease-in-out"
+  >
+    <a href="#main" class="hover:text-indigo-400 transition duration-300">Home</a>
+    <a href="#services" class="hover:text-indigo-400 transition duration-300">Services</a>
+    <a href="#portfolio" class="hover:text-indigo-400 transition duration-300">Portfolio</a>
+    <a href="#work" class="hover:text-indigo-400 transition duration-300">Work</a>
+    <a href="#about" class="hover:text-indigo-400 transition duration-300">About Us</a>
+    <a href="#pricing" class="hover:text-indigo-400 transition duration-300">Pricing</a>
+    <a href="#speciality" class="hover:text-indigo-400 transition duration-300">Speciality</a>
+  </div>
+</header>
+
+<!-- JS for Menu Toggle -->
+
 
   <!-- Custom Cursor -->
-  <div id="cursor"></div>
+ <div id="cursor"></div>
+<div id="blob"></div>
+
 
   <!-- Hero Section -->
   <section id="main" class="h-screen flex flex-col items-center justify-center text-center relative overflow-hidden font-eurostile-extended">
     <!-- Logo -->
-<div class="w-40 h-auto absolute top-0 left-0"><img src="./assets/logo.png" alt="logo"></div>
+
     <!-- Rotating PNG background -->
     <div id="rotating-bg"></div>
 
@@ -265,8 +363,8 @@ Get Started
     <div id="blob" class="absolute w-[400px] h-[400px] rounded-full bg-indigo-500 blur-3xl opacity-30"></div>
   </section>
 <!--  about section  -->
-<section id="about" class="bg-black text-white px-6 py-16 md:px-10 lg:px-20  ">
-  <div class="max-w-7xl mx-auto flex flex-col gap-20">
+<section id="about" class="bg-black text-white px-6 py-20 md:px-10 lg:px-20">
+  <div class="max-w-7xl mx-auto flex flex-col gap-24">
 
     <!-- 🔹 Row 1: Image + ABOUT -->
     <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
@@ -275,59 +373,69 @@ Get Started
         <img
           src="https://images.unsplash.com/photo-1633457519574-29c294d1805c?q=80&w=627&auto=format&fit=crop"
           alt="About"
-          class="rounded-2xl object-cover w-full lg:w-4/5 h-64 lg:h-[450px]"
+          class="rounded-2xl object-cover w-full lg:w-4/5 h-64 lg:h-[450px] shadow-xl shadow-white/5"
         />
       </div>
 
       <!-- Right ABOUT text -->
-      <div class="flex justify-center lg:justify-start text-center lg:text-left">
+      <div class="flex flex-col justify-center text-center lg:text-left space-y-4">
         <h2 class="text-5xl lg:text-7xl font-bold tracking-wide">ABOUT</h2>
+        <p class="text-gray-400 text-lg max-w-md mx-auto lg:mx-0 leading-relaxed">
+          We’re not just a service provider — we’re your <span class="text-white font-semibold">creative growth partner.</span><br><br>
+          Our mission is simple: turn bold ideas into powerful brand experiences through smart design, 
+          strategic marketing, and storytelling that connects.<br><br>
+          Whether you're launching, growing, or rebranding — we help you stand out with purpose and precision.
+        </p>
       </div>
     </div>
 
     <!-- 🔹 Row 2: Overview -->
     <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
       <div>
-        <h3 class="text-2xl font-bold mb-3">OVERVIEW</h3>
+        <h3 class="text-3xl font-bold mb-4 text-white">WHO WE ARE</h3>
         <p class="text-gray-300 leading-relaxed text-base md:text-lg max-w-lg">
-          Vbizgro is a social media agency that helps startups, coaches, and local
-          businesses grow online. <br /><br />
-          We create content that gets attention, builds trust, and brings in real results.
+          At Vbizgro, we blend strategy, creativity, and technology to elevate brands across industries.
+          From startups finding their voice to enterprises redefining their presence — 
+          we craft experiences that inspire trust and drive growth.<br><br>
+          Our focus? Building <span class="text-white font-semibold">brands that connect and convert.</span>
         </p>
       </div>
 
       <div class="flex justify-center lg:justify-end">
         <img
           src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1170&auto=format&fit=crop"
-          alt="Consultant"
-          class="rounded-xl object-cover w-full lg:w-4/5 h-64 lg:h-[400px]"
+          alt="Team working"
+          class="rounded-xl object-cover w-full lg:w-4/5 h-64 lg:h-[400px] shadow-lg shadow-white/5"
         />
       </div>
     </div>
 
     <!-- 🔹 Row 3: Our Mission -->
     <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
-      <!-- Mission text -->
-      <div class="order-2 lg:order-1">
-        <h3 class="text-2xl font-bold mb-4">OUR MISSION</h3>
-        <p class="text-gray-300 leading-relaxed text-base md:text-lg max-w-lg">
-          Since our beginning, we’ve been passionate about helping companies of all
-          sizes connect with their audience. From startups to established enterprises,
-          our approach is built on creativity, innovation, and measurable results.
-        </p>
-      </div>
-
       <!-- Mission image -->
-      <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+      <div class="order-1 lg:order-1 flex justify-center lg:justify-start">
         <img
           src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68?q=80&w=1170&auto=format&fit=crop"
           alt="Mission"
-          class="rounded-xl object-cover w-full lg:w-4/5 h-64 lg:h-[400px]"
+          class="rounded-xl object-cover w-full lg:w-4/5 h-64 lg:h-[400px] shadow-lg shadow-white/5"
         />
       </div>
+
+      <!-- Mission text -->
+      <div class="order-2 lg:order-2">
+        <h3 class="text-3xl font-bold mb-4 text-white">OUR MISSION</h3>
+        <p class="text-gray-300 leading-relaxed text-base md:text-lg max-w-lg">
+          We’re on a mission to empower businesses with design that speaks, 
+          marketing that performs, and stories that resonate.<br><br>
+          Every brand we work with is treated as a partner — because when you grow, 
+          <span class="text-white font-semibold">we grow together.</span>
+        </p>
+      </div>
     </div>
+
   </div>
 </section>
+
 
 
 
@@ -346,46 +454,70 @@ Get Started
     <!-- Heading -->
     <div class="mb-12 text-center">
       <h2 class="text-4xl md:text-5xl font-semibold font-inter mb-2">Why Choose Us?</h2>
-      <p class="text-blue-500 text-lg font-lite">Key Highlights</p>
+      <p class="text-blue-500 text-lg font-lite">We combine strategy, creativity, and results — and treat every brand like our own.</p>
     </div>
 
     <!-- Features Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-      
+
       <!-- Feature Card 1 -->
-      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
-        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">🎯 Strategic Content That Converts</h3>
+      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">🎨 Creative + Strategic Execution</h3>
         <p class="text-gray-300 mb-4 text-sm">
-          We don’t just post—we build brand stories. Every reel, carousel, and caption is designed to spark engagement and drive results.
+          Every project gets a perfect blend of creativity and strategy. We make designs that don’t just look good—they perform.
         </p>
-        <a href="#" class="text-orange-400 text-sm font-medium hover:underline">Learn more →</a>
       </div>
 
       <!-- Feature Card 2 -->
-      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
-        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">⚡ Design That Stops the Scroll</h3>
+      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">⚡ Fast, On-Time Delivery</h3>
         <p class="text-gray-300 mb-4 text-sm">
-          Cinematic visuals, magnetic buttons, and pixel-perfect layouts—crafted to grab attention and keep users hooked.
+          We respect your time. Our team delivers quality work promptly, keeping your projects on schedule without compromising excellence.
         </p>
-        <a href="#" class="text-orange-400 text-sm font-medium hover:underline">Learn more →</a>
-        <div class="absolute top-4 right-4 w-6 h-6 bg-white rounded-full flex items-center justify-center text-black text-xs font-bold">↗</div>
       </div>
 
       <!-- Feature Card 3 -->
-      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
-        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">📈 Growth-Driven Systems</h3>
+      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">📈 Custom Solutions, No Templates</h3>
         <p class="text-gray-300 mb-4 text-sm">
-          From scalable design libraries to full social media handling—we build systems that grow with your brand, not just today but long-term.
+          Every brand is unique, so we create custom solutions tailored to your goals—no copy-paste templates.
         </p>
-        <a href="#" class="text-orange-400 text-sm font-medium hover:underline">Learn more →</a>
+      </div>
+
+      <!-- Feature Card 4 -->
+      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">🔍 Transparent & Collaborative Workflow</h3>
+        <p class="text-gray-300 mb-4 text-sm">
+          Work with us closely at every stage. We keep you in the loop with clear communication and collaborative processes.
+        </p>
+      </div>
+
+      <!-- Feature Card 5 -->
+      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">🤝 Long-Term Support, Even After Launch</h3>
+        <p class="text-gray-300 mb-4 text-sm">
+          Our relationship doesn’t end at launch. We offer long-term support to ensure your brand keeps thriving.
+        </p>
+      </div>
+
+      <!-- Feature Card 6 -->
+      <div class="feature-card bg-gray-900 p-6 rounded-xl group relative overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-orange-400 transition">🏆 Experience That Delivers</h3>
+        <p class="text-gray-300 mb-4 text-sm">
+          With 5+ years of experience and 30+ projects delivered, we’ve helped startups and growing businesses create designs and campaigns that leave a mark.
+        </p>
       </div>
 
     </div>
   </div>
 </section>
+
 
 
 
@@ -397,8 +529,8 @@ Get Started
         <!-- Heading -->
         <div class="mb-12">
           <h2 class="text-3xl md:text-5xl  leading-tight font-'Nico MoJi' mb-4">
-            Your SEARCH 🔍 FOR A <span class="text-yellow-400">SOCIAL MEDIA MARKETING</span> & 
-            <span class="text-yellow-400">BRANDING</span> ENDS HERE...
+            Your SEARCH 🔍 FOR A <span class="text-green-400">SOCIAL MEDIA MARKETING</span> & 
+            <span class="text-blue-400">BRANDING</span> ENDS HERE...
           </h2>
           <div class="w-4 h-4 rounded-full bg-yellow-400 mx-auto"></div>
         </div>
@@ -450,38 +582,18 @@ Get Started
         <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
           <div class="glass-icon text-2xl mb-2">📸</div>
           <div>
-            <strong>Instagram Management</strong>
-            <p class="text-sm text-gray-400">+100 followers/week • Monthly strategy • Viral edits</p>
+            <strong class="font-nico-moji text-lg">Instagram Management</strong>
+            <p class="text-sm text-gray-400 font-roboto">+100 followers/week • Monthly strategy • Viral edits</p>
           </div>
         </div>
         <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
           <div class="glass-icon text-2xl mb-2">💼</div>
           <div>
-            <strong>LinkedIn Writing</strong>
-            <p class="text-sm text-gray-400">Personalized posts • Thought leadership • DM-ready content</p>
+            <strong class="font-nico-moji text-lg">LinkedIn Writing</strong>
+            <p class="text-sm text-gray-400 font-roboto">Personalized posts • Thought leadership • DM-ready content</p>
           </div>
         </div>
-        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
-          <div class="glass-icon text-2xl mb-2">🎬</div>
-          <div>
-            <strong>Reels Editing</strong>
-            <p class="text-sm text-gray-400">Cinematic cuts • Hook-based storytelling • Trend sync</p>
-          </div>
-        </div>
-        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
-          <div class="glass-icon text-2xl mb-2">🧠</div>
-          <div>
-            <strong>Personal Branding</strong>
-            <p class="text-sm text-gray-400">Voice clarity • Visual identity • Trust-building assets</p>
-          </div>
-        </div>
-        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
-          <div class="glass-icon text-2xl mb-2">🌀</div>
-          <div>
-            <strong>Carousel Design</strong>
-            <p class="text-sm text-gray-400">Swipe-worthy layouts • Story-driven flow • CTA optimized</p>
-          </div>
-        </div>
+        <!-- add the rest cards same way -->
       </div>
 
       <!-- Upward Column -->
@@ -489,46 +601,26 @@ Get Started
         <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
           <div class="glass-icon text-2xl mb-2">📈</div>
           <div>
-            <strong>Social Strategy</strong>
-            <p class="text-sm text-gray-400">Platform roadmap • Weekly goals • Growth tracking</p>
+            <strong class="font-nico-moji text-lg">Social Strategy</strong>
+            <p class="text-sm text-gray-400 font-roboto">Platform roadmap • Weekly goals • Growth tracking</p>
           </div>
         </div>
         <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
           <div class="glass-icon text-2xl mb-2">🧩</div>
           <div>
-            <strong>Profile Optimization</strong>
-            <p class="text-sm text-gray-400">Bio revamp • Highlight curation • Link strategy</p>
+            <strong class="font-nico-moji text-lg">Profile Optimization</strong>
+            <p class="text-sm text-gray-400 font-roboto">Bio revamp • Highlight curation • Link strategy</p>
           </div>
         </div>
-        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
-          <div class="glass-icon text-2xl mb-2">📘</div>
-          <div>
-            <strong>Facebook Management</strong>
-            <p class="text-sm text-gray-400">Page growth • Post scheduling • Ad-ready content</p>
-          </div>
-        </div>
-        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
-          <div class="glass-icon text-2xl mb-2">🚀</div>
-          <div>
-            <strong>Startup Branding</strong>
-            <p class="text-sm text-gray-400">Logo + voice • Launch kit • Brand guidelines</p>
-          </div>
-        </div>
-        <div class="glass-card bg-[#111] border border-gray-800 rounded-xl p-4 shadow-lg backdrop-blur-md">
-          <div class="glass-icon text-2xl mb-2">🎨</div>
-          <div>
-            <strong>Creative Post Design</strong>
-            <p class="text-sm text-gray-400">Scroll-stopping visuals • Custom icons • Motion graphics</p>
-          </div>
-        </div>
+        <!-- add the rest cards same way -->
       </div>
 
     </div>
 
     <!-- Right Section: Static Heading -->
     <div class="text-center">
-      <h2 class="glassHead text-4xl md:text-5xl  mb-6">What You’ll Get</h2>
-      <p class="text-gray-400 text-sm md:text-base">Growth. Engagement. Identity. Everything your brand needs to stand out.</p>
+      <h2 class="glassHead font-nico-moji text-4xl md:text-5xl mb-6">What You’ll Get</h2>
+      <p class="text-gray-400 text-sm md:text-base font-roboto">Growth. Engagement. Identity. Everything your brand needs to stand out.</p>
     </div>
 
   </div>
@@ -538,18 +630,18 @@ Get Started
 
 <!--  process section  -->
 
-<section id="process" class="relative  w-full py-24 overflow-hidden">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Our Process</h2>
-      <p class="text-gray-400 text-lg">From strategy to success — step by step</p>
+<section id="process" class="relative w-full py-32 bg-black overflow-hidden">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-20">
+      <h2 class="text-4xl md:text-5xl font-nico-moji text-white  mb-3">Our Process</h2>
+      <p class="text-gray-400 text-lg font-roboto">Step by step, we bring your brand to life.</p>
     </div>
 
-    <div class="wrapper flex flex-col gap-20 h-94 relative">
-      <!-- Cards will be inserted here by JS -->
-    </div>
+    <div class="process-stack relative space-y-12"></div>
+      <div class="h-[100vh]"></div>
   </div>
 </section>
+
 
 
 
@@ -558,6 +650,11 @@ Get Started
  
 <section id="portfolio" class="min-h-screen overflow-hidden relative bg-black text-white py-20">
   <div class="max-w-6xl mx-auto px-4 space-y-20">
+<!-- Heading -->
+<div class="text-center">
+  <h2 class="text-4xl md:text-5xl font-nico-moji text-white mx-auto">Our Work</h2>
+  <p class="text-blue-500 text-lg font-light mt-2">Crafting experiences that convert and captivate</p>
+</div>
 
     <!-- Project 1 -->
     <div class="project-item relative flex flex-col md:flex-row items-center md:items-stretch overflow-hidden">
@@ -567,8 +664,8 @@ Get Started
       </div>
       <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
         <div class="content opacity-0 translate-y-10 space-y-4">
-          <h3 class="text-3xl md:text-4xl font-bold tracking-tight leading-snug text-white">FeelUX by Vbizgro Studio</h3>
-          <p class="text-base md:text-lg text-gray-300 leading-relaxed">
+          <h3 class="text-3xl md:text-4xl font-nico-moji tracking-tight leading-snug text-white">FeelUX by Vbizgro Studio</h3>
+          <p class="text-base md:text-lg font-roboto  text-gray-300 leading-relaxed">
             That’s the philosophy behind <span class="text-white font-semibold">FeelUX</span>, a flagship experience crafted by Vbizgro Studio for ECOAVENSTRA.<br><br>
             We didn’t just design screens—we engineered <span class="text-white font-semibold">emotion</span>. Every swipe, tap, and transition was built to feel intuitive, invisible, and unforgettable.<br><br>
             From login flows to financial dashboards, we focused on what users <span class="text-white font-semibold">feel</span>—not just what they see.<br><br>
@@ -587,8 +684,8 @@ Get Started
       </div>
       <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
         <div class="content opacity-0 translate-y-10 space-y-4">
-          <h3 class="text-3xl md:text-4xl font-bold tracking-tight leading-snug text-white">NextSite by EcoAvenstra</h3>
-          <p class="text-base md:text-lg text-gray-300 leading-relaxed">
+          <h3 class="text-3xl md:text-4xl font-nico-moji tracking-tight leading-snug text-white">NextSite by EcoAvenstra</h3>
+          <p class="text-base md:text-lg text-gray-300 font-roboto leading-relaxed">
             Your competitors just upgraded. Did you?<br><br>
             NextSite is EcoAvenstra’s elite web development solution for brands that refuse to fall behind.<br><br>
             We don’t build websites—we engineer <span class="text-white font-semibold">digital dominance</span>. With floating UI mockups, responsive layouts, and conversion-first design, NextSite turns your online presence into a growth engine.<br><br>
@@ -607,8 +704,8 @@ Get Started
       </div>
       <div class="w-full md:w-1/2 p-8 flex items-center justify-center">
         <div class="content opacity-0 translate-y-10 space-y-4">
-          <h3 class="text-3xl md:text-4xl font-bold tracking-tight leading-snug text-white">LinkedIn Launchpad</h3>
-          <p class="text-base md:text-lg text-gray-300 leading-relaxed">
+          <h3 class="text-3xl md:text-4xl font-nico-moji tracking-tight leading-snug text-white">LinkedIn Launchpad</h3>
+          <p class="text-base md:text-lg text-gray-300 leading-relaxed font-roboto">
             LinkedIn Launchpad is a carousel-based content series designed to turn professionals into personal brands.<br><br>
             Built for scroll-stopping impact, each panel delivers a strategic punch—from niche clarity to thought leadership and visual storytelling.<br><br>
             We didn’t just design a carousel—we built a <span class="text-white font-semibold">conversion engine</span>.
@@ -634,85 +731,105 @@ Get Started
 
 
 
-   <section id="pricing" class="max-w-6xl mx-auto py-20">
-      <h2 class="text-4xl font-bold text-center mb-16">Pricing Plans</h2>
+  <section id="pricing" class="max-w-6xl mx-auto py-20">
+  <h2 class="text-4xl font-nico-moji text-center mb-16">Pricing Plans</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Basic -->
-        <div
-          class="card group p-8 rounded-2xl flex flex-col items-center text-center hover:cursor-pointer"
-          data-color="blue"
-        >
-          <h3 class="text-2xl font-bold mb-2">Basic</h3>
-          <p class="text-gray-400 mb-4">Seamless Web3 integration, Enhanced Privacy.</p>
-          <p class="text-3xl font-bold mb-6">$250<span class="text-base text-gray-400">/month</span></p>
-          <button
-            class="bg-transparent border border-gray-600 px-6 py-2 rounded-full mb-6 hover:bg-gray-800 transition"
-          >
-            Choose this plan
-          </button>
-          <ul class="text-sm text-gray-300 space-y-2">
-            <li>✔️ 2 free seats</li>
-            <li>✔️ 10GB cloud storage</li>
-            <li>✔️ Smart contract integration</li>
-            <li>✔️ Decentralized workflows</li>
-          </ul>
-        </div>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <!-- Starter Package -->
+    <div class="card group p-8 rounded-2xl flex flex-col items-center text-center hover:cursor-pointer" data-color="blue">
+      <h3 class="text-2xl font-nico-moji font-light mb-2">⭐ Starter Package</h3>
+      <p class="text-3xl font-bold mb-6">₹8,999<span class="text-base text-gray-400">/month</span></p>
+      <button class="bg-transparent border border-gray-600 px-6 py-2 rounded-full mb-6 hover:bg-gray-800 transition">
+        Get Started
+      </button>
+      <ul class="text-sm text-gray-300 space-y-2  font-roboto text-left">
+        <li class="font-roboto">✔️ 6 Static/Image Posts</li>
+        <li>✔️ 1 Reel (Basic Edits)</li>
+        <li>✔️ 2 Carousel Posts</li>
+        <li>✔️ Platform Setup & Optimization</li>
+        <li>✔️ Caption + Hashtag Strategy</li>
+        <li>✔️ 1 Monthly Report</li>
+        <li>✔️ Basic Page Management</li>
+      </ul>
+      <p class="text-gray-400 text-sm mt-4">Perfect for building a clean, professional presence.</p>
+    </div>
 
-        <!-- Professional -->
-        <div
-          class="card group p-10 rounded-2xl flex flex-col items-center text-center scale-105 hover:cursor-pointer border border-gray-700"
-          data-color="red"
-        >
-          <h3 class="text-2xl font-bold mb-2">Professional</h3>
-          <p class="text-gray-400 mb-4">Supercharged crypto tools. Personalized insights.</p>
-          <p class="text-3xl font-bold mb-6">$499<span class="text-base text-gray-400">/month</span></p>
-          <button
-            class="bg-red-600 px-6 py-2 rounded-full mb-6 hover:bg-red-700 transition"
-          >
-            Choose this plan
-          </button>
-          <ul class="text-sm text-gray-300 space-y-2">
-            <li>✔️ 5 free seats</li>
-            <li>✔️ 30GB cloud storage</li>
-            <li>✔️ Enhanced privacy</li>
-            <li>✔️ Market insights</li>
-            <li>✔️ Decentralized applications</li>
-          </ul>
-        </div>
+    <!-- Growth Package -->
+    <div class="card group p-8 rounded-2xl flex flex-col items-center text-center hover:cursor-pointer border border-gray-700 scale-105" data-color="red">
+      <h3 class="text-2xl font-nico-moji mb-2">⭐⭐ Growth Package</h3>
+      <p class="text-3xl font-roboto mb-6">₹21,999<span class="text-base text-gray-400">/month</span></p>
+      <button class="bg-red-600 px-6 py-2 rounded-full mb-6 hover:bg-red-700 transition">
+        Get Started
+      </button>
+      <ul class="text-sm text-gray-300 space-y-2 text-left">
+        <li>✔️ 10 Static/Image Posts</li>
+        <li>✔️ 4 Reels (Professionally Edited)</li>
+        <li>✔️ 3 Carousel Posts</li>
+        <li>✔️ Content Strategy + Scheduling</li>
+        <li>✔️ Platform Setup & Optimization</li>
+        <li>✔️ Creative Captions + Hashtag Research</li>
+        <li>✔️ Engagement Monitoring</li>
+        <li>✔️ 2 Monthly Reports + Insights</li>
+      </ul>
+      <p class="text-gray-400 text-sm mt-4">More content, better strategy, stronger results.</p>
+    </div>
 
-        <!-- Enterprise -->
-        <div
-          class="card group p-8 rounded-2xl flex flex-col items-center text-center hover:cursor-pointer"
-          data-color="green"
-        >
-          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
-          <p class="text-gray-400 mb-4">For your elite team. Secure data, market analytics.</p>
-          <p class="text-3xl font-bold mb-6">$650<span class="text-base text-gray-400">/month</span></p>
-          <button
-            class="bg-transparent border border-gray-600 px-6 py-2 rounded-full mb-6 hover:bg-gray-800 transition"
-          >
-            Choose this plan
-          </button>
-          <ul class="text-sm text-gray-300 space-y-2">
-            <li>✔️ 10 free seats</li>
-            <li>✔️ 100GB cloud storage</li>
-            <li>✔️ Dedicated privacy</li>
-            <li>✔️ 24/7 support</li>
-          </ul>
-        </div>
+    <!-- Pro Package -->
+    <div class="card group p-8 rounded-2xl flex flex-col items-center text-center hover:cursor-pointer" data-color="green">
+      <h3 class="text-2xl font-nico-moji  mb-2">⭐⭐⭐ Pro Package</h3>
+      <p class="text-3xl font-roboto mb-6">₹25,999<span class="text-base text-gray-400">/month</span></p>
+      <button class="bg-transparent border border-gray-600 px-6 py-2 rounded-full mb-6 hover:bg-gray-800 transition">
+        Get Started
+      </button>
+      <ul class="text-sm text-gray-300 space-y-2 text-left">
+        <li>✔️ 16 Static/Image Posts</li>
+        <li>✔️ 6 Reels (Professionally Edited)</li>
+        <li>✔️ 4 Carousel Posts</li>
+        <li>✔️ Advanced Content Strategy</li>
+        <li>✔️ Competitor & Audience Insights</li>
+        <li>✔️ Ads Setup (Optional)</li>
+        <li>✔️ Community Management (DMs & Comments)</li>
+        <li>✔️ Weekly Performance Reports</li>
+        <li>✔️ Dedicated Social Media Manager</li>
+      </ul>
+      <p class="text-gray-400 text-sm mt-4">Designed for serious growth and engagement.</p>
+    </div>
+
+    <!-- Custom Package -->
+    <div class="card group p-8 rounded-2xl flex flex-col items-center text-center hover:cursor-pointer" data-color="purple">
+      <h3 class="text-2xl font-nico-moji mb-2">Custom Package</h3>
+      <p class="text-lg text-gray-400 mb-4 font-roboto">📞 Price on Request</p>
+      <button class="bg-transparent border border-gray-600 px-6 py-2 rounded-full mb-6 hover:bg-gray-800 transition">
+        Get Started
+      </button>
+      <ul class="text-sm text-gray-300 space-y-2 text-left">
+        <li>✔️ Image Post – ₹399</li>
+        <li>✔️ Reels – ₹1,499</li>
+        <li>✔️ Carousel Posts – ₹1,199</li>
+        <li>✔️ Animated/Motion Graphics – ₹999</li>
+        <li>✔️ Profile Setup + Optimization – ₹5,499</li>
+        <li>✔️ Instagram Profile Setup – ₹4,999</li>
+      </ul>
+      <div class="mt-6 text-gray-400 text-sm text-left space-y-1">
+        <p>⭐ Includes basic scheduling & publishing.</p>
+        <p>⭐ Content approvals via WhatsApp/Email.</p>
+        <p>⭐ Prices exclude taxes (if applicable).</p>
+        <p>⭐ Monthly retainer. No long-term lock-ins.</p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
 
  <section
       class="w-11/12 md:w-10/12 lg:w-9/12 mx-auto flex flex-col md:flex-row items-center justify-between gap-12 py-20"
     >
       <!-- LEFT SIDE -->
       <div class="md:w-1/2 text-left">
-        <h2 class="text-4xl md:text-6xl font-serif italic">What</h2>
-        <h2 class="text-4xl md:text-6xl font-bold">OUR CLIENTS</h2>
-        <h2 class="text-4xl md:text-6xl font-bold">ARE</h2>
-        <h2 class="text-4xl md:text-6xl font-bold">SAYING...</h2>
+        <h2 class="text-4xl md:text-6xl font-nico-moji italic">What</h2>
+        <h2 class="text-4xl md:text-6xl font-nico-moji">OUR CLIENTS</h2>
+        <h2 class="text-4xl md:text-6xl font-nico-moji">ARE</h2>
+        <h2 class="text-4xl md:text-6xl font-nico-moji">SAYING...</h2>
       </div>
 
       <!-- RIGHT SIDE -->
@@ -727,10 +844,10 @@ Get Started
               class="w-24 h-24 rounded-full object-cover"
             />
             <div>
-              <h3 id="client-name" class="text-xl font-semibold">
+              <h3 id="client-name" class="text-xl font-roboto">
                 Arjun Malhotra
               </h3>
-              <p id="client-role" class="text-sm italic text-gray-400">
+              <p id="client-role" class="text-sm italic font-roboto text-gray-400">
                 Founder, PixelCraft Studio
               </p>
             </div>
@@ -759,78 +876,174 @@ Get Started
       </div>
     </section>
 
+ <section class="px-6 py-20 max-w-6xl mx-auto" data-aos="fade-up">
+      <h2 class="text-4xl font-bold mb-6 text-center">What We Do</h2>
+      <p class="text-gray-400 text-center max-w-3xl mx-auto mb-10">
+        We offer 360° branding and digital marketing solutions, including:
+      </p>
 
-<section id="contact" class="min-h-screen bg-black text-white px-6 py-20">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-
-    <!-- Left Panel: Contact Options + Image -->
-    <div class="space-y-8">
-      <h2 class="text-4xl font-bold leading-tight text-white">
-        Are you a brand? Just want to learn more?
-      </h2>
-
-      <div class="space-y-6">
-        <div class="bg-[#111] border border-gray-800 rounded-xl p-6 shadow-md">
-          <p class="text-lg font-semibold text-white">Have questions about packaging?</p>
-          <p class="text-sm text-gray-400">Email us at <a href="mailto:whales@vbizgro.com" class="text-blue-500 underline hover:text-blue-400">whales@vbizgro.com</a></p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-[#111] border border-gray-800 p-6 rounded-xl hover:-translate-y-2 transition-all duration-300">
+          <h3 class="text-xl font-semibold mb-2 text-yellow-400">Branding & Identity Design</h3>
+          <p class="text-gray-400 text-sm">Crafting unforgettable visual identities that define your brand.</p>
         </div>
-
-        <div class="bg-[#111] border border-gray-800 rounded-xl p-6 shadow-md">
-          <p class="text-lg font-semibold text-white">Prefer to email directly?</p>
-          <p class="text-sm text-gray-400">Reach us at <a href="mailto:info@vbizgro.com" class="text-blue-500 underline hover:text-blue-400">info@vbizgro.com</a></p>
+        <div class="bg-[#111] border border-gray-800 p-6 rounded-xl hover:-translate-y-2 transition-all duration-300">
+          <h3 class="text-xl font-semibold mb-2 text-yellow-400">Digital Marketing</h3>
+          <p class="text-gray-400 text-sm">(SEO, Ads, Funnels) — Strategies that drive real, measurable growth.</p>
         </div>
-
-        <div class="bg-[#111] border border-gray-800 rounded-xl p-6 shadow-md">
-          <p class="text-lg font-semibold text-white">Already a client or want to be?</p>
-          <button class="mt-2 px-4 py-2 bg-blue-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-all duration-300 hover:scale-105 shadow-md">
-            Tell us how we can help
-          </button>
+        <div class="bg-[#111] border border-gray-800 p-6 rounded-xl hover:-translate-y-2 transition-all duration-300">
+          <h3 class="text-xl font-semibold mb-2 text-yellow-400">Social Media Strategy</h3>
+          <p class="text-gray-400 text-sm">Building strong communities through creative content & engagement.</p>
+        </div>
+        <div class="bg-[#111] border border-gray-800 p-6 rounded-xl hover:-translate-y-2 transition-all duration-300">
+          <h3 class="text-xl font-semibold mb-2 text-yellow-400">Graphic Design</h3>
+          <p class="text-gray-400 text-sm">(Web, Print, Packaging) — Designs that convert attention into action.</p>
+        </div>
+        <div class="bg-[#111] border border-gray-800 p-6 rounded-xl hover:-translate-y-2 transition-all duration-300">
+          <h3 class="text-xl font-semibold mb-2 text-yellow-400">Video Production</h3>
+          <p class="text-gray-400 text-sm">(Motion Graphics) — Telling stories that captivate and inspire audiences.</p>
+        </div>
+        <div class="bg-[#111] border border-gray-800 p-6 rounded-xl hover:-translate-y-2 transition-all duration-300">
+          <h3 class="text-xl font-semibold mb-2 text-yellow-400">Custom Projects</h3>
+          <p class="text-gray-400 text-sm">Need something else? Let’s build it together.</p>
         </div>
       </div>
+    </section>
 
-      <div class="overflow-hidden rounded-xl shadow-md mt-6">
-        <img src="./assets/contactus.jpg" alt="abstract design" class="rounded-xl scale-100 hover:scale-105 transition-transform duration-700 ease-out" />
+    <!-- OUR RESULTS -->
+    <section class="px-6 py-20 max-w-6xl mx-auto text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold mb-10">Our Results Speak for Themselves</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-[#111] border border-gray-800 rounded-xl p-6">
+          <p class="text-3xl font-bold text-yellow-400">150+</p>
+          <p class="text-sm text-gray-400">Successful Campaigns</p>
+        </div>
+        <div class="bg-[#111] border border-gray-800 rounded-xl p-6">
+          <p class="text-3xl font-bold text-yellow-400">70%</p>
+          <p class="text-sm text-gray-400">Avg. Engagement Boost</p>
+        </div>
+        <div class="bg-[#111] border border-gray-800 rounded-xl p-6">
+          <p class="text-3xl font-bold text-yellow-400">40%</p>
+          <p class="text-sm text-gray-400">Client Sales Growth</p>
+        </div>
+        <div class="bg-[#111] border border-gray-800 rounded-xl p-6">
+          <p class="text-3xl font-bold text-yellow-400">98%</p>
+          <p class="text-sm text-gray-400">Repeat Clients</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Right Panel: Form -->
-    <form class="space-y-6 bg-[#111] border border-gray-800 rounded-xl p-8 shadow-md">
-      <h3 class="text-2xl font-bold mb-4 text-white">Send a Request</h3>
+    <!-- OUR TEAM -->
+    <section class="px-6 py-20 font-nico-moji overflow-hidden" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-center mb-8">Our Team</h2>
+      <p class="text-gray-400 text-center max-w-3xl mx-auto mb-12">
+        We’re a team of creative strategists, designers, marketers, and storytellers — passionate about building brands that not only look good, but perform great.
+      </p>
 
-      <div>
-        <label class="block text-sm font-medium text-gray-400 mb-1">Name <span class="text-red-500">*</span></label>
-        <input type="text" placeholder="Your name" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none" required />
+      <div class="relative w-full overflow-hidden">
+        <div class="scroll-track">
+          <!-- Repeat team images twice for smooth infinite scroll -->
+          <div class="flex gap-8 px-8">
+            <img src="https://randomuser.me/api/portraits/women/1.jpg" class="w-32 h-32 rounded-full object-cover" />
+            <img src="https://randomuser.me/api/portraits/men/2.jpg" class="w-32 h-32 rounded-full object-cover" />
+            <img src="https://randomuser.me/api/portraits/women/3.jpg" class="w-32 h-32 rounded-full object-cover" />
+            <img src="https://randomuser.me/api/portraits/men/4.jpg" class="w-32 h-32 rounded-full object-cover" />
+            <img src="https://randomuser.me/api/portraits/women/5.jpg" class="w-32 h-32 rounded-full object-cover" />
+            <img src="https://randomuser.me/api/portraits/men/6.jpg" class="w-32 h-32 rounded-full object-cover" />
+          </div>
+          <div class="flex gap-8 px-8">
+            <img src="https://randomuser.me/api/portraits/women/1.jpg" class="w-32 h-32 rounded-full object-cover" />
+            <img src="https://randomuser.me/api/portraits/men/2.jpg" class="w-32 h-32 rounded-full object-cover" />
+            <img src="https://randomuser.me/api/portraits/women/3.jpg" class="w-32 h-32 rounded-full object-cover" />
+            <img src="https://randomuser.me/api/portraits/men/4.jpg" class="w-32 h-32 rounded-full object-cover" />
+            <img src="https://randomuser.me/api/portraits/women/5.jpg" class="w-32 h-32 rounded-full object-cover" />
+            <img src="https://randomuser.me/api/portraits/men/6.jpg" class="w-32 h-32 rounded-full object-cover" />
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div>
-        <label class="block text-sm font-medium text-gray-400 mb-1">Email <span class="text-red-500">*</span></label>
-        <input type="email" placeholder="Your email" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none" required />
-      </div>
-
-      <div>
-        <label class="block text-sm font-medium text-gray-400 mb-1">Company</label>
-        <input type="text" placeholder="Company name" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none" />
-      </div>
-
-      <div>
-        <label class="block text-sm font-medium text-gray-400 mb-1">Phone</label>
-        <input type="tel" placeholder="Phone number" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none" />
-      </div>
-
-      <div>
-        <label class="block text-sm font-medium text-gray-400 mb-1">Message <span class="text-red-500">*</span></label>
-        <textarea rows="3" placeholder="How can we help you?" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none resize-none"></textarea>
-      </div>
-
-      <button class="mt-4 px-6 py-3 bg-blue-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-all duration-300 hover:scale-105 shadow-md">
-        Submit Request
-      </button>
-    </form>
-
+    <!-- HOW WE WORK + CONTACT FORM -->
+    <section class="px-6 py-20 max-w-6xl mx-auto" data-aos="fade-up">
+      <h2 class="text-4xl  font-nico-moji text-center mb-10">How We Work</h2>
+      <!-- Process Section -->
+<div class="flex items-center justify-center gap-6 text-gray-400 text-sm md:text-base mb-10 select-none">
+  <div class="flex items-center gap-2 group">
+    <i class="ri-brain-line text-green-400 text-xl group-hover:scale-125 transition-transform duration-300"></i>
+    <span class="group-hover:text-green-300 transition-colors duration-300">Think</span>
   </div>
-</section>
+  <i class="ri-arrow-right-line text-gray-500"></i>
 
-<footer class="relative bg-black border-t border-gray-800 py-20 overflow-hidden font-inter">
+  <div class="flex items-center gap-2 group">
+    <i class="ri-paint-brush-line text-pink-400 text-xl group-hover:scale-125 transition-transform duration-300"></i>
+    <span class="group-hover:text-pink-300 transition-colors duration-300">Create</span>
+  </div>
+  <i class="ri-arrow-right-line text-gray-500"></i>
+
+  <div class="flex items-center gap-2 group">
+    <i class="ri-rocket-line text-blue-400 text-xl group-hover:scale-125 transition-transform duration-300"></i>
+    <span class="group-hover:text-blue-300 transition-colors duration-300">Launch</span>
+  </div>
+  <i class="ri-arrow-right-line text-gray-500"></i>
+
+  <div class="flex items-center gap-2 group">
+    <i class="ri-bar-chart-2-line text-yellow-400 text-xl group-hover:scale-125 transition-transform duration-300"></i>
+    <span class="group-hover:text-yellow-300 transition-colors duration-300">Optimize</span>
+  </div>
+</div>
+
+      <p class="text-gray-400 text-center max-w-3xl font-roboto  mx-auto mb-20">
+        We listen. We plan. We build. And we scale — delivering designs and campaigns that align with your goals and grow your brand.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <!-- FORM -->
+        <form class="space-y-6 bg-[#111] border border-gray-800 rounded-xl p-8 font-nico-moji shadow-md">
+          <h3 class="text-2xl font-nico-moji mb-4 text-white">Let’s Talk</h3>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-1">Name <span class="text-red-500">*</span></label>
+            <input type="text" placeholder="Your name" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none" required />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-1">Email <span class="text-red-500">*</span></label>
+            <input type="email" placeholder="Your email" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none" required />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-1">Message <span class="text-red-500">*</span></label>
+            <textarea rows="3" placeholder="Tell us what you need" class="w-full bg-transparent border-b border-gray-600 text-white py-2 outline-none resize-none" required></textarea>
+          </div>
+
+          <button class="mt-4 px-6 py-3 bg-blue-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-all duration-300 hover:scale-105 shadow-md">
+            Submit Request
+          </button>
+        </form>
+
+        <!-- CONTACT INFO -->
+        <div class="space-y-6 font-nico-moji">
+          <div>
+            <h4 class="text-xl  mb-2">connect to  grow</h4>
+            <p class="text-gray-400 text-sm mb-1">Speak to our friendly team</p>
+            <a href="mailto:sales@agency.com" class="text-yellow-400 hover:underline">sales@agency.com</a>
+          </div>
+          <div>
+            <h4 class="text-xl font-semibold mb-2">Email support</h4>
+            <p class="text-gray-400 text-sm mb-1">We’ll get back within 24 hours</p>
+            <a href="mailto:support@agency.com" class="text-yellow-400 hover:underline">support@agency.com</a>
+          </div>
+          <div>
+            <h4 class="text-xl font-semibold mb-2">Chat support</h4>
+            <p class="text-gray-400 text-sm mb-1">24/7 instant access to our staff</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<footer class="relative bg-black border-t border-gray-800 py-20 overflow-hidden font-nico-moji">
   <!-- Glowing chip background -->
   <img src="https://images.unsplash.com/photo-1681101378971-5f5dc4e5000e?q=80&w=1657&auto=format&fit=crop" alt="Tech Background" class="absolute inset-0 w-full h-full object-cover opacity-10 z-0" />
 
@@ -922,33 +1135,16 @@ Get Started
 
   <!-- MENU -->
 <!-- FULLSCREEN MENU -->
-<div id="menu" class="fixed inset-0 bg-black text-white flex flex-col items-center justify-center text-4xl gap-6 hidden">
-  <!-- Logo Section -->
-  <div class="absolute top-6 left-6 w-32 h-auto">
-    <img src="./assets/logo.png" alt="Logo" class="w-full h-auto object-contain" />
-  </div>
 
-  <!-- Navigation Links -->
-<div class="flex flex-col items-center gap-6 mt-20">
-  <a href="#main" class="hover:text-indigo-400 transition duration-300">Home</a>
-  <a href="#services" class="hover:text-indigo-400 transition duration-300">Services</a>
-  <a href="#portfolio" class="hover:text-indigo-400 transition duration-300">Portfolio</a>
-  <a href="#work" class="hover:text-indigo-400 transition duration-300">Work</a>
-  <a href="#about" class="hover:text-indigo-400 transition duration-300">About Us</a>
-  <a href="#pricing" class="hover:text-indigo-400 transition duration-300">Pricing</a>
-  <a href="#speciality" class="hover:text-indigo-400 transition duration-300">Speciality</a>
-</div>
-
-</div>
 
 <!-- MENU BUTTON -->
-<button id="menuBtn" class="fixed top-6 right-6 z-50 text-white text-3xl">☰</button> 
+
 
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <script src="./script.js"></script>
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="./script.js"></script> 
 </body>
 </html>

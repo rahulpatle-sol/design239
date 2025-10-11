@@ -12,15 +12,16 @@ gsap.from(".hero-text span", {
 
 // Cursor effect
 const cursor = document.getElementById("cursor");
-window.addEventListener("mousemove", (e) => {
-  gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.2 });
-});
-
-// Blob follows cursor
 const blob = document.getElementById("blob");
+
 window.addEventListener("mousemove", (e) => {
+  // Cursor follows mouse
+  gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
+
+  // Blob follows slower with offset
   gsap.to(blob, { x: e.clientX - 200, y: e.clientY - 200, duration: 2, ease: "expo.out" });
 });
+
 
 // Magnetic button hover
 document.querySelectorAll("button").forEach(btn => {
@@ -36,18 +37,44 @@ document.querySelectorAll("button").forEach(btn => {
   });
 });
 // Text Split Animation (About Section)
-gsap.from(".about-text span, .about-text", {
-  scrollTrigger: {
-    trigger: "#about",
-    start: "top 70%"
-  },
-  y: 80,
-  opacity: 0,
-  duration: 1.2,
-  stagger: 0.2,
-  ease: "power4.out"
-});
+ gsap.from("#about h2, #about p", {
+    scrollTrigger: {
+      trigger: "#about",
+      start: "top 70%",
+      toggleActions: "play none none reverse",
+    },
+    y: 80,
+    opacity: 0,
+    duration: 1.2,
+    stagger: 0.2,
+    ease: "power4.out",
+  });
 
+  // Animate all images inside the about section
+  gsap.from("#about img", {
+    scrollTrigger: {
+      trigger: "#about",
+      start: "top 80%",
+    },
+    scale: 0.9,
+    opacity: 0,
+    duration: 1.2,
+    stagger: 0.3,
+    ease: "power2.out",
+  });
+
+  // Animate all sub-headings (WHO WE ARE, OUR MISSION)
+  gsap.from("#about h3", {
+    scrollTrigger: {
+      trigger: "#about",
+      start: "top 75%",
+    },
+    y: 60,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.25,
+    ease: "power3.out",
+  });
 // Services Cards Reveal
 gsap.from(".service-card", {
   scrollTrigger: {
@@ -77,28 +104,23 @@ gsap.from(".service-card", {
 
 // Fullscreen Menu Animation
 const menuBtn = document.getElementById("menuBtn");
-const menu = document.getElementById("menu");
-let menuOpen = false;
+  const mobileMenu = document.getElementById("mobileMenu");
+  let open = false;
 
-const menuTl = gsap.timeline({ paused: true })
-  .fromTo("#menu", { display: "none", opacity: 0 }, { display: "flex", opacity: 1, duration: 0.5 })
-  .from(".menu-link", { y: 100, opacity: 0, stagger: 0.1, ease: "power4.out" }, "-=0.3");
+  menuBtn.addEventListener("click", () => {
+    open = !open;
 
-menuBtn.addEventListener("click", () => {
-  if (!menuOpen) {
-    menuTl.play();
-    menuOpen = true;
-    menuBtn.textContent = "×";
-  } else {
-    menuTl.reverse();
-    menuOpen = false;
-    menuBtn.textContent = "☰";
-  }
-});
-
-
-
-
+    if (open) {
+      mobileMenu.classList.remove("hidden");
+      mobileMenu.classList.add("flex");
+      mobileMenu.classList.add("animate-slideDown");
+      menuBtn.innerHTML = '<i class="ri-close-line"></i>';
+    } else {
+      mobileMenu.classList.add("hidden");
+      mobileMenu.classList.remove("flex");
+      menuBtn.innerHTML = '<i class="ri-menu-3-line"></i>';
+    }
+  });
 
 
 ///  hero  video  container animation
@@ -186,10 +208,7 @@ gsap.fromTo(blob,
 );
 
 
-// gsap.to('#about img',{
-//  top:20,
-//  scale:1.5,
-// })
+
 
 
 
@@ -212,22 +231,22 @@ gsap.to(scrollTrack, {
 // services
 // Animate each card individually as it enters viewport
   gsap.utils.toArray("#glass-ui .grid > div").forEach((card, i) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card, 
-        
-        start: "top 85%",
-        toggleActions: "play none none reverse"
-      },
-    
-      opacity: 0,
-      scale: 0.85,
-      y: 40,
-      duration: 0.6,
-      ease: "power2.out",
-      delay: i * 0.15, // staggered entrance
-      scrub: true,
-    });
+  gsap.utils.toArray(".card").forEach((card, i) => {
+  gsap.fromTo(card, 
+    { opacity: 0.6, scale: 0.85, y: 0 }, 
+    { 
+      opacity: 0, 
+      scale: 1.3, 
+      y: 20, 
+      duration: 1, 
+      ease: "power1.inOut", 
+      repeat: Infinity,    // infinite loop
+        // smooth back and forth
+      delay: i * 0.02 // stagger start
+    }
+  );
+});
+
   });
 
 
@@ -237,7 +256,7 @@ gsap.to(scrollTrack, {
     card.addEventListener("mouseenter", () => {
       gsap.to(card, {
         scale: 1.05,
-        boxShadow: "0 10px 20px rgba(161, 209, 26, 0.91)",
+        boxShadow: "0 10px 20px rgba(70, 141, 233, 0.91)",
         duration: 0.3,
         ease: "power2.out"
       });
@@ -257,33 +276,16 @@ gsap.to(scrollTrack, {
     ease: "power2.out",
     scrollTrigger: {
       trigger: "#portfolio",
-      start: "top center",
-      end: "bottom top",
-      scrub: true, // smooth scroll control
+      start: "bottom",
+      end: " top",
+      scrub: 0.4, // smooth scroll control
     },
   });
 
 
 
   //  new code of services
-// Downward loop
-// Downward infinite scroll (left column)
-gsap.to(".down-column", {
-  y: "+=100",           // move downward
-  duration: 5,
-  repeat: -1,
-  ease: "none"
-  , toggleActions: "play none none reverse"
 
-});
-
-// Upward infinite scroll (right column)
-gsap.to(".up-column", {
-  y: "-=100",           // move upward
-  duration: 5,
-  repeat: -1,
-  ease: "none"
-});
 
 
 
@@ -381,8 +383,11 @@ gsap.to(".up-column", {
 
         let glowColor;
         if (color === "blue") glowColor = "rgba(0, 136, 255, 0.6)";
-        if (color === "red") glowColor = "rgba(255, 50, 50, 0.6)";
-        if (color === "green") glowColor = "rgba(50, 255, 100, 0.6)";
+        if (color === "red") glowColor = "rgba(146, 215, 90, 0.6)";
+        if (color === "green") glowColor = "rgba(0, 251, 63, 0.82)"; 
+        if (color === "purple") glowColor = "rgba(200, 100, 255, 0.6)";
+
+        // Hover glow effect
 
         card.addEventListener("mouseenter", () => {
           gsap.to(card, {
@@ -505,77 +510,7 @@ gsap.to(".up-column", {
 
 
 
-//   const images = document.querySelectorAll(".process-img");
-
-//   steps.forEach((step, i) => {
-//     ScrollTrigger.create({
-//       trigger: "#process",
-//       start: `${i * 100}vh top`,
-//       end: `${(i + 1) * 100}vh top`,
-//       onEnter: () => updateStep(step),
-//       onEnterBack: () => updateStep(step)
-//     });
-//   });
-
-//   function updateStep(step) {
-//     document.getElementById("step-number").textContent = step.number;
-//     document.getElementById("step-title").textContent = step.title;
-//     document.getElementById("step-desc").textContent = step.desc;
-
-//     images.forEach((img, i) => {
-//       gsap.to(img, {
-//         opacity: i === step.imageIndex ? 1 : 0,
-//         duration: 0.6,
-//         ease: "power2.out"
-//       });
-//     });
-//   }
-
-
-// gsap.utils.toArray(".process-img").forEach((img, i) => {
-//   ScrollTrigger.create({
-//     trigger: img,
-//     start: `${i * 100}vh top`,
-//     end: `${(i + 1) * 100}vh top`,
-//     onEnter: () => updateStep(i),
-//     onEnterBack: () => updateStep(i),
-//   });
-// });
-
-// function updateStep(index) {
-//   const step = steps[index];
-//   document.getElementById("step-number").textContent = step.number;
-//   document.getElementById("step-title").textContent = step.title;
-//   document.getElementById("step-desc").textContent = step.desc;
-
-//   gsap.to(".process-img", { opacity: 0, duration: 0.5 });
-//   gsap.to(".process-img", { opacity: (el, i) => (i === index ? 1 : 0), duration: 0.5 });
-// }
-
-
-// gsap.utils.toArray(".process-img").forEach((img, i) => {
-//   ScrollTrigger.create({
-//     trigger: img,
-//     start: `${i * 100}vh top`,
-//     end: `${(i + 1) * 100}vh top`,
-//     onEnter: () => updateStep(i),
-//     onEnterBack: () => updateStep(i),
-//   });
-// });
-
-// function updateStep(index) {
-//   const step = steps[index];
-//   document.getElementById("step-number").textContent = step.number;
-//   document.getElementById("step-title").textContent = step.title;
-//   document.getElementById("step-desc").textContent = step.desc;
-
-//   gsap.to(".process-img", { opacity: 0, duration: 0.5 });
-//   gsap.to(".process-img", {
-//     opacity: (el, i) => (i === index ? 1 : 0),
-//     duration: 0.5,
-//   });
-// }
-
+//   
 // button  animation
 const mainBtn = document.getElementById("mainbtn");
 mainBtn.addEventListener("onclick",()=>{
@@ -584,74 +519,78 @@ mainBtn.addEventListener("onclick",()=>{
 
 
 
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
-    {
-      number: "1",
-      title: "Strategic Call",
-      desc: "We ask you 50–60 deep-dive questions to understand your brand’s goals, audience, and voice.",
-      img: "https://images.unsplash.com/photo-1659353219596-80cd21857b52?w=500&auto=format&fit=crop&q=60"
-    },
-    {
-      number: "2",
-      title: "Profile Optimization",
-      desc: "We refine your brand presence across platforms to ensure strong, consistent communication.",
-      img: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=870&auto=format&fit=crop"
-    },
-    {
-      number: "3",
-      title: "Content Funnel",
-      desc: "We craft scroll-stopping content tailored to convert attention into engagement.",
-      img: "https://plus.unsplash.com/premium_vector-1744201400607-99dddccd0180?w=500&auto=format&fit=crop"
-    },
-    {
-      number: "4",
-      title: "Content Roadmap",
-      desc: "We develop a timeline and publishing flow to maintain steady, strategic growth.",
-      img: "https://plus.unsplash.com/premium_vector-1720507938681-7d683d11f3a2?q=80&w=1074&auto=format&fit=crop"
-    },
-    {
-      number: "5",
-      title: "Design Approval",
-      desc: "You approve creative visuals that embody your brand’s essence and message.",
-      img: "https://images.unsplash.com/photo-1710799885122-428e63eff691?q=80&w=1287&auto=format&fit=crop"
-    },
-    {
-      number: "6",
-      title: "Analytics & Reporting",
-      desc: "We measure performance, track ROI, and refine strategy to maximize results.",
-      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop"
-    },
-  ];
+  { title: "Strategic Call", desc: "We ask 50–60 deep-dive questions to map your goals.", img: "https://images.unsplash.com/photo-1659353219596-80cd21857b52?w=800" },
+  { title: "Profile Optimization", desc: "We refine your presence to make communication consistent.", img: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?w=800" },
+  { title: "Content Funnel", desc: "We craft scroll-stopping content that converts attention.", img: "https://plus.unsplash.com/premium_vector-1744201400607-99dddccd0180?w=800" },
+  { title: "Content Roadmap", desc: "We plan a timeline to ensure continuous brand growth.", img: "https://plus.unsplash.com/premium_vector-1720507938681-7d683d11f3a2?w=800" },
+  { title: "Design Approval", desc: "You approve designs reflecting your brand voice.", img: "https://images.unsplash.com/photo-1710799885122-428e63eff691?w=800" },
+  { title: "Analytics & Reporting", desc: "We track performance and refine strategy.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" },
+];
 
-  const wrapper = document.querySelector(".wrapper");
+const container = document.querySelector(".process-stack");
 
-  steps.forEach((step, i) => {
-    const card = document.createElement("div");
-    card.className =
-      "process flex flex-col md:flex-row items-center h-92 gap-6 md:gap-10 px-6 py-10";
-    card.innerHTML = `
-      <img src="${step.img}" alt="${step.title}" class="w-full md:w-1/2 h-60 object-cover rounded-xl">
-      <div class="flex flex-col text-center md:text-left">
-        <span class="text-4xl md:text-5xl font-extrabold text-red-500 mb-2">${step.number}</span>
-        <h3 class="text-2xl md:text-3xl font-semibold mb-3">${step.title}</h3>
-        <p class="text-gray-300 leading-relaxed">${step.desc}</p>
-      </div>
-    `;
-    wrapper.appendChild(card);
+steps.forEach((step, i) => {
+  const card = document.createElement("div");
+  card.className = `
+    process-card relative bg-[#0d0d0d] rounded-3xl shadow-2xl overflow-hidden
+    text-white p-10 md:p-14 flex flex-col md:flex-row items-center gap-8
+  `;
+  const reverse = i % 2 !== 0 ? "md:flex-row-reverse" : "";
 
-    // Scroll stacking animation
-    gsap.to(card, {
-      y: -i * 100,
-      scale: 1 - i * 0.05,
+  card.innerHTML = `
+    <div class="w-full md:w-1/2 h-72 md:h-96 overflow-hidden rounded-2xl">
+      <img src="${step.img}" class="w-full h-full object-cover scale-110 transition-transform duration-700 hover:scale-100" />
+    </div>
+    <div class="w-full md:w-1/2 ${reverse}">
+      <h3 class="text-3xl font-bold mb-3">${step.title}</h3>
+      <p class="text-gray-400 text-lg leading-relaxed">${step.desc}</p>
+    </div>
+  `;
+
+  container.appendChild(card);
+
+  // Stack scroll animation
+  gsap.fromTo(
+    card,
+    { yPercent: 100, scale: 0.95, opacity: 0 },
+    {
+      yPercent: 0,
+      scale: 1,
+      opacity: 1,
+      ease: "power3.out",
       scrollTrigger: {
         trigger: card,
-        start: "top center",
-        end: "bottom top",
+        start: "top bottom-=200",
+        end: "top center",
         scrub: true,
-        pin: true,
-        pinSpacing: false
-      }
-    });
+      },
+    }
+  );
+
+  // Pin + stack effect
+  ScrollTrigger.create({
+    trigger: card,
+    start: "top top+=200",
+    end: "+=300%",
+    pin: true,
+    pinSpacing: false,
+    scrub: true,
+    markers: false,
   });
+});
+
+
+// const teamRow = document.getElementById("teamScroll");
+
+//   gsap.to(teamRow, {
+//     x: "-50%", // adjust based on card count
+//     duration: 30,
+//     ease: "linear",
+//     repeat: -1
+//   });
+  AOS.init({ duration: 1000, once: true });
